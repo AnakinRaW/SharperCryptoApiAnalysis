@@ -142,8 +142,9 @@ using SharperCryptoApiAnalysis.Interop.CodeAnalysis;
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class SdkSampleAnalyzerNetStandardAnalyzer : SharperCryptoApiAnalysisDiagnosticAnalyzer
 {
+
 	//Convention: In order for reports to interact with the VS-Extension all diagnostic id must have the prefix. "SCAA"
-    public const string DiagnosticId = DiagnosticPrefix.Prefix + "xxx";
+    	public const string DiagnosticId = DiagnosticPrefix.Prefix + "xxx";
 	
 	private static readonly DiagnosticDescriptor WarningRule = new DiagnosticDescriptor(DiagnosticId,
 		"Summary", "Summary", "Category", DiagnosticSeverity.Warning, true, "Description");
