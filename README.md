@@ -17,7 +17,7 @@ will be offered with the tool so the user can manage all available extensions.
 
 *Sharper Crypto-API Analysis* utilizes the Roslyn compiler platform  and is available for Visual Studio.
 
-![Alt text](/doc/images/scaa.png?raw=true "Sharper Crypto-API Analysis")
+![Alt text](/doc/images/scaa.PNG?raw=true "Sharper Crypto-API Analysis")
 
 ***
 
