@@ -489,7 +489,20 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Tests
         }
     }
 }";
-            VerifyCSharpDiagnostic(test);
+
+            var expected = new DiagnosticResult
+            {
+                Id = Report.Id,
+                Message = Report.Summary,
+                Severity = DiagnosticSeverity.Info,
+                Locations =
+                    new[]
+                    {
+                        new DiagnosticResultLocation("Test0.cs", 9, 32)
+                    }
+            };
+
+            VerifyCSharpDiagnostic(test, expected);
         }
 
         protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
