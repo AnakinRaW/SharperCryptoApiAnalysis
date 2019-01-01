@@ -1,0 +1,3 @@
+[submodule "submodules/ModernApplicationFramework"]
+	path = submodules/ModernApplicationFramework
+	url = https://github.com/AnakinSklavenwalker/ModernApplicationFramework
