@@ -10,7 +10,7 @@ The plan however is to add this plugin to the dedicated Visual Studio Marketplac
 Download and run the `SharperCryptoApiAnalysis.vsix` file. Follow the instruction of the installer.
 When installation is completed start Visual Studio. You will be welcomed to Sharper Crypto-API Analysis by a message window indicating that the installation was successful.
 
-![Alt text](images/vsfirststart.PNG?raw=true "Sharper Crypto-API Analysis")
+![Alt text](../images/vsfirststart.PNG?raw=true "Sharper Crypto-API Analysis")
 
 ## Getting started
 
@@ -23,7 +23,7 @@ One major feature of this tool is providing detailed information about a coding 
 To see that report you can open the *Error List* tool window of Visual Studio and click on the error code link.
 The tool window of this plugin will pop up and shows you the report.
 
-![Alt text](images/scaa.PNG?raw=true "Sharper Crypto-API Analysis")
+![Alt text](../images/scaa.PNG?raw=true "Sharper Crypto-API Analysis")
 
 Note: This feature will only work for reported errors issued by Sharper Crypto-API Analysis compatible analyzer. Their error codes
 always have the prefix `SCAA`.
