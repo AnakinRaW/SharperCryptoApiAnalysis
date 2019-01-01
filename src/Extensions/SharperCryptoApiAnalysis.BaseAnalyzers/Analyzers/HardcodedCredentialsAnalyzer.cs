@@ -92,12 +92,17 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Analyzers
             if (variableDeclarator.Initializer == null)
                 return;
 
+            var variableName = variableDeclarator.Identifier.ValueText;
+            if (!SuspiciousNames.Any(x => variableName.IndexOf(x, StringComparison.InvariantCultureIgnoreCase) >= 0))
+                return;
+
             if (!variableDeclarator.Initializer.Value.IsOrContainsCompileTimeConstantValue<string>(context, out _))
                 return;
 
-            var variableName = variableDeclarator.Identifier.ValueText;
-            AnalyzeInternal(context, variableName, variableDeclarator.Initializer);
-
+            var rule = GetRule(DiagnosticId, CurrentSeverity);
+            context.ReportDiagnostic(Diagnostic.Create(rule,
+                variableDeclarator.Initializer.GetLocation(),
+                context.ContainingSymbol.Name));
         }
 
         private void ObjectCreationAction(SyntaxNodeAnalysisContext context)
@@ -127,12 +132,17 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Analyzers
             if (propertyDeclaration.Initializer == null)
                 return;
 
+            var variableName = propertyDeclaration.Identifier.ValueText;
+            if (!SuspiciousNames.Any(x => variableName.IndexOf(x, StringComparison.InvariantCultureIgnoreCase) >= 0))
+                return;
+
             if (!propertyDeclaration.Initializer.Value.IsOrContainsCompileTimeConstantValue<string>(context, out _))
                 return;
 
-            var variableName = propertyDeclaration.Identifier.ValueText;
-
-            AnalyzeInternal(context, variableName, propertyDeclaration.Initializer);
+            var rule = GetRule(DiagnosticId, CurrentSeverity);
+            context.ReportDiagnostic(Diagnostic.Create(rule,
+                propertyDeclaration.Initializer.GetLocation(),
+                context.ContainingSymbol.Name));
         }
 
         private void AnalyzeSyntaxInternal(SyntaxNodeAnalysisContext context, ExpressionSyntax syntax, SyntaxNode reportSyntax)
@@ -141,17 +151,6 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Analyzers
                 (_, expressionSyntax) => IsCompileTimeConstantPassword(context, expressionSyntax)))
             {
                 context.ReportDiagnostic(Diagnostic.Create(ErrorRule,
-                    reportSyntax.GetLocation(),
-                    context.ContainingSymbol.Name));
-            }
-        }
-
-        private void AnalyzeInternal(SyntaxNodeAnalysisContext context, string variableName, SyntaxNode reportSyntax)
-        {
-            if (SuspiciousNames.Any(x => variableName.IndexOf(x, StringComparison.InvariantCultureIgnoreCase) >= 0))
-            {
-                var rule = GetRule(DiagnosticId, CurrentSeverity);
-                context.ReportDiagnostic(Diagnostic.Create(rule,
                     reportSyntax.GetLocation(),
                     context.ContainingSymbol.Name));
             }
