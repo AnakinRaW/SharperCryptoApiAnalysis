@@ -76,7 +76,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Tests
             {
                 Id = Report.Id,
                 Message = Report.Summary,
-                Severity = DiagnosticSeverity.Warning,
+                Severity = DiagnosticSeverity.Hidden,
                 Locations =
                     new[]
                     {
@@ -128,7 +128,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Tests
             {
                 Id = Report.Id,
                 Message = Report.Summary,
-                Severity = DiagnosticSeverity.Warning,
+                Severity = DiagnosticSeverity.Hidden,
                 Locations =
                     new[]
                     {
@@ -160,7 +160,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Tests
             {
                 Id = Report.Id,
                 Message = Report.Summary,
-                Severity = DiagnosticSeverity.Warning,
+                Severity = DiagnosticSeverity.Hidden,
                 Locations =
                     new[]
                     {
@@ -214,7 +214,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Tests
             {
                 Id = Report.Id,
                 Message = Report.Summary,
-                Severity = DiagnosticSeverity.Warning,
+                Severity = DiagnosticSeverity.Hidden,
                 Locations =
                     new[]
                     {
@@ -247,7 +247,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Tests
             {
                 Id = Report.Id,
                 Message = Report.Summary,
-                Severity = DiagnosticSeverity.Warning,
+                Severity = DiagnosticSeverity.Hidden,
                 Locations =
                     new[]
                     {
@@ -280,7 +280,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Tests
             {
                 Id = Report.Id,
                 Message = Report.Summary,
-                Severity = DiagnosticSeverity.Warning,
+                Severity = DiagnosticSeverity.Hidden,
                 Locations =
                     new[]
                     {
