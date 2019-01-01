@@ -1,0 +1,38 @@
+﻿<local:GenericAnalyzerDetailView
+    x:Class="SharperCryptoApiAnalysis.Vsix.Views.ToolWindowPane.AnalyzerDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SharperCryptoApiAnalysis.Vsix.Controls"
+    xmlns:converters="clr-namespace:SharperCryptoApiAnalysis.Shell.Interop.Converters;assembly=SharperCryptoApiAnalysis.Shell.Interop"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SharperCryptoApiAnalysis.Vsix.Views.ToolWindowPane"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sampleData="clr-namespace:SharperCryptoApiAnalysis.Vsix.ViewModels.SampleData"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <FrameworkElement.Resources>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <converters:InverseNullToVisibilityConverter x:Key="InverseNullToVisibilityConverter" />
+    </FrameworkElement.Resources>
+
+    <Grid>
+        <TextBlock
+            Margin="48"
+            HorizontalAlignment="Center"
+            Visibility="{Binding ActiveReport, Converter={StaticResource InverseNullToVisibilityConverter}}">
+            No Report
+        </TextBlock>
+        <ScrollViewer
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding ActiveReport, Converter={StaticResource NullToVisibilityConverter}}">
+            <Border VerticalAlignment="Stretch">
+                <controls:AnalysisReportView d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=sampleData:ReportViewSampleData}" DataContext="{Binding}" />
+            </Border>
+        </ScrollViewer>
+    </Grid>
+
+
+</local:GenericAnalyzerDetailView>

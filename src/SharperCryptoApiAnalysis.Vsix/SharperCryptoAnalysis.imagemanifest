@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ImageManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
+  <Symbols>
+    <String Name="Resources" Value="/SharperCryptoApiAnalysis;Component/Resources" />
+    <Guid Name="SharperCryptoApiAnalysisImagesGuid" Value="{670405d6-ff01-49b5-a000-e89806716e6a}" />
+    <ID Name="application" Value="1" />
+    <ID Name="test" Value="2" />
+  </Symbols>
+  <Images>
+    <Image Guid="$(SharperCryptoApiAnalysisImagesGuid)" ID="$(application)">
+      <Source Uri="$(Resources)/Application.xaml"/>
+    </Image>
+
+    <Image Guid="$(SharperCryptoApiAnalysisImagesGuid)" ID="$(test)">
+      <Source Uri="$(Resources)/Application.xaml"/>
+    </Image>
+  </Images>
+  <ImageLists />
+</ImageManifest>

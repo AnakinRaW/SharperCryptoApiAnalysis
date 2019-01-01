@@ -1,0 +1,49 @@
+﻿<UserControl
+    x:Class="SharperCryptoApiAnalysis.BaseAnalyzers.CryptoTasks.SymmetricEncryption.WizardPages.UseMacPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:SharperCryptoApiAnalysis.Shell.Interop.Converters;assembly=SharperCryptoApiAnalysis.Shell.Interop"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SharperCryptoApiAnalysis.BaseAnalyzers.CryptoTasks.SymmetricEncryption.WizardPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </FrameworkElement.Resources>
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="12" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Do you want to add an integrity check to your encrypted Data?" />
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="2"
+            Orientation="Horizontal">
+            <RadioButton
+                Content="Yes"
+                GroupName="YesNo"
+                IsChecked="{Binding DataModel.UseMac, Mode=TwoWay}" />
+            <RadioButton
+                Margin="24,0,0,0"
+                Content="No"
+                GroupName="YesNo"
+                IsChecked="{Binding DataModel.UseMac, Converter={StaticResource InverseBooleanConverter}, Mode=TwoWay}" />
+        </StackPanel>
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Text="If you want to be sure the encryption cipher text is secured against manipulation you need to add an integrity check by using a so called message authentication code (MAC). Enabling this option will generate a HMAC (hashing based MAC) functionality. If you have selected password based encryption the HMAC key is derived from the password. If you do not use a password please be sure to use a different HMAC key than the encryption key."
+            TextTrimming="CharacterEllipsis"
+            TextWrapping="Wrap" />
+    </Grid>
+</UserControl>

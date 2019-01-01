@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Include href="Monikers.vsct"/>
+  <Include href="KnownImageIds.vsct"/>
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="SharperCryptoApiAnalysisPackage">
+
+    <Menus>
+      <Menu guid="ToolbarCommandSet" id="SharperCryptoApiAnalysisToolbar" priority="0x0000" type="ToolWindowToolbar">
+        <Strings>
+          <ButtonText>WindowToolBar</ButtonText>
+          <CommandName>Window Toolbar</CommandName>
+        </Strings>
+      </Menu>
+      <Menu guid="SharperCryptoApiAnalysisCommandSet" id="SharperAnalysisMenu" priority="0x700" type="Menu">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS"/>
+        <Strings>
+          <ButtonText>Sharper Crypto-API Analysis</ButtonText>
+          <CommandName>Sharper Crypto-API Analysis</CommandName>
+        </Strings>
+      </Menu>
+      <Menu guid="SharperCryptoApiAnalysisCommandSet" id="HelpMenu" priority="0x800" type="Menu">
+        <Parent guid="SharperCryptoApiAnalysisCommandSet" id="MyMenuGroup"/>
+        <Strings>
+          <ButtonText>Hilfe</ButtonText>
+          <CommandName>Hilfe</CommandName>
+        </Strings>
+      </Menu>
+    </Menus>
+
+    <Groups>
+      <Group guid="SharperCryptoApiAnalysisCommandSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="SharperCryptoApiAnalysisCommandSet" id="SharperAnalysisMenu"/>
+      </Group>
+
+      <Group guid="SharperCryptoApiAnalysisCommandSet" id="HelpMenuGroup" priority="0x000">
+        <Parent guid="SharperCryptoApiAnalysisCommandSet" id="HelpMenu"/>
+      </Group>
+
+      <Group guid="ToolbarCommandSet" id="ToolbarNavigationMenuGroup" priority="0x0500">
+        <Parent guid="ToolbarCommandSet" id="SharperCryptoApiAnalysisToolbar" />
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <!-- Main Menubar Members -->
+      <Button guid="SharperCryptoApiAnalysisCommandSet" id="AboutCommand" priority="0x0100" type="Button">
+        <Parent guid="SharperCryptoApiAnalysisCommandSet" id="HelpMenuGroup" />
+        <Strings>
+          <ButtonText>Über Sharper Crypto-API Analysis...</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="SharperCryptoApiAnalysisCommandSet" id="ShowPaneCommand" type="Button">
+        <Strings>
+          <ButtonText>Sharper Crypto-API Analsysis</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Add Item Commands-->
+      <Button guid="SharperCryptoApiAnalysisCommandSet" id="AddCryptoAbstractionFile" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
+        <Strings>
+          <ButtonText>Crypto Task...</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Toolbar Buttons -->
+      <Button guid="ToolbarCommandSet" id="ToolbarAnalyzerDetailId" priority="0x0100" type="Button">
+        <Parent guid= "ToolbarCommandSet" id="ToolbarNavigationMenuGroup" />
+        <Icon guid="ImageCatalogGuid" id="IntellisenseLightBulb" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Report</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="ToolbarCommandSet" id="ToolbarAnalyzerReportsId" priority="0x0101" type="Button">
+        <Parent guid= "ToolbarCommandSet" id="ToolbarNavigationMenuGroup" />
+        <Icon guid="ImageCatalogGuid" id="IntellisenseDatabase" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Available Reports</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="ToolbarCommandSet" id="ToolbarManageConnectionsId" priority="0x0102" type="Button">
+        <Parent guid= "ToolbarCommandSet" id="ToolbarNavigationMenuGroup" />
+        <Icon guid="ImageCatalogGuid" id="ConnectedServices" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Manage Connections</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="ToolbarCommandSet" id="ToolbarManageExtensionsId" priority="0x0103" type="Button">
+        <Icon guid="ImageCatalogGuid" id="PackageProperty" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Manage Extensions</ButtonText>
+        </Strings>
+      </Button>
+
+    </Buttons>
+
+  </Commands>
+
+  <CommandPlacements>
+
+    <CommandPlacement guid="ToolbarCommandSet" id="ToolbarManageExtensionsId" priority="0x0100">
+      <Parent guid="ToolbarCommandSet" id="ToolbarNavigationMenuGroup"/>
+    </CommandPlacement>
+
+
+
+    <CommandPlacement guid="SharperCryptoApiAnalysisCommandSet" id="ShowPaneCommand" priority="0x0100">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+    </CommandPlacement>
+
+
+  </CommandPlacements>
+
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="SharperCryptoApiAnalysisPackage" value="{7BD4F491-D3DD-4B98-9F02-66B65DEE88BF}" />
+
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="SharperCryptoApiAnalysisCommandSet" value="{218ff211-c215-4600-b42e-b7568e1c4171}">
+
+      <!-- Menus -->
+      <IDSymbol name="SharperAnalysisMenu" value="0x001"/>
+      <IDSymbol name="HelpMenu" value="0x0003"/>
+
+      <!-- Menu Groups -->
+      <IDSymbol name="MyMenuGroup" value="0x1001" />
+      <IDSymbol name="HelpMenuGroup" value="0x1002" />
+
+      <!-- Commands -->
+      <IDSymbol name="AboutCommand" value="0x2001" />
+      <IDSymbol name="ShowPaneCommand" value="0x2002"/>
+      <IDSymbol name="AddCryptoAbstractionFile" value="0x2003"/>
+
+    </GuidSymbol>
+
+    <GuidSymbol name="ToolbarCommandSet" value="{3B6E23F0-2F47-4F93-BE76-DCAAD30A6AAF}">
+      <IDSymbol name="ToolbarNavigationMenuGroup" value="0x1110" />
+      <IDSymbol name="SharperCryptoApiAnalysisToolbar" value="0x1120" />
+      <IDSymbol name="ToolbarManageConnectionsId" value="0x1150" />
+      <IDSymbol name="ToolbarManageExtensionsId" value="0x1160" />
+      <IDSymbol name="ToolbarAnalyzerDetailId" value="0x1170" />
+      <IDSymbol name="ToolbarAnalyzerReportsId" value="0x1180" />
+    </GuidSymbol>
+
+  </Symbols>
+</CommandTable>

@@ -1,0 +1,206 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:codeAnalysis="clr-namespace:SharperCryptoApiAnalysis.Interop.CodeAnalysis;assembly=SharperCryptoApiAnalysis.Interop"
+    xmlns:commands="clr-namespace:SharperCryptoApiAnalysis.Vsix.Commands"
+    xmlns:controls="clr-namespace:SharperCryptoApiAnalysis.Vsix.Controls"
+    xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+    xmlns:imaging1="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+    xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+    xmlns:sampleData="clr-namespace:SharperCryptoApiAnalysis.Vsix.ViewModels.SampleData"
+    xmlns:shell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0">
+
+    <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="True">
+                        <ContentPresenter
+                            x:Name="contentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Focusable="False"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static shell:VsBrushes.ToolWindowButtonHoverActiveKey}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static shell:VsBrushes.ToolWindowButtonHoverActiveBorderKey}}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static shell:VsBrushes.ToolWindowButtonDownKey}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static shell:VsBrushes.ToolWindowButtonDownBorderKey}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <DataTemplate x:Key="TestTemplate" DataType="{x:Type codeAnalysis:IAnalysisReport}">
+        <Border Background="Transparent">
+            <Grid MinHeight="24">
+                <Grid
+                    MinHeight="24"
+                    VerticalAlignment="Top"
+                    Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="36" MaxHeight="36" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Top"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Text="{Binding Id}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="NoWrap" />
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="4" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="2"
+                            Text="{Binding Summary}"
+                            TextTrimming="CharacterEllipsis"
+                            TextWrapping="Wrap" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+
+    <ControlTemplate x:Key="ListBoxItemTemplate" TargetType="{x:Type ListBoxItem}">
+        <Border
+            x:Name="Border"
+            Padding="0,8,0,0"
+            Background="{TemplateBinding Background}"
+            BorderThickness="0"
+            SnapsToDevicePixels="True">
+            <Grid Margin="16,0,7,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ContentPresenter
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    ContentTemplate="{StaticResource TestTemplate}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                <Grid
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Top">
+                    <Button
+                        x:Name="Button"
+                        Command="{x:Static commands:AnalysisCommands.ShowReportCommand}"
+                        CommandParameter="{Binding}"
+                        Style="{StaticResource ButtonStyle}"
+                        ToolTip="Show Details"
+                        Visibility="Hidden">
+                        <imaging:CrispImage
+                            Width="16"
+                            Height="16"
+                            Moniker="{x:Static imaging1:KnownMonikers.DetailView}" />
+                    </Button>
+                </Grid>
+
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+            </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static platformUi:EnvironmentColors.ToolboxContentMouseOverBrushKey}}" />
+                <Setter TargetName="Button" Property="Visibility" Value="Visible" />
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static platformUi:EnvironmentColors.ToolboxContentMouseOverTextBrushKey}}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelectionActive" Value="False" />
+                    <Condition Property="IsSelected" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemInactiveBrushKey}}" />
+                <Setter TargetName="Button" Property="Visibility" Value="Visible" />
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemInactiveTextBrushKey}}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelectionActive" Value="True" />
+                    <Condition Property="IsSelected" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="Button" Property="Visibility" Value="Visible" />
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemActiveBrushKey}}" />
+                <Setter TargetName="Border" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemActiveTextBrushKey}}" />
+            </MultiTrigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template" Value="{StaticResource ListBoxItemTemplate}" />
+    </Style>
+
+
+
+    <Style TargetType="{x:Type controls:ReportsListBox}">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
+        <Setter Property="VirtualizingPanel.CacheLength" Value="1,2" />
+        <Setter Property="VirtualizingPanel.CacheLengthUnit" Value="Page" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border
+                        Padding="1"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="True">
+                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+</ResourceDictionary>

@@ -1,0 +1,25 @@
+﻿using System;
+using System.Security.Cryptography;
+
+namespace $namespace$
+{
+    public static class SecureKeyGenerator
+    {
+        /// <summary>
+        /// Generates a random filled Array of bytes to be used as a cryptographic key.
+        /// </summary>
+        /// <param name="keyLength">The length of the key in bits</param>
+        /// <returns>The generated Key</returns>
+        public static byte[] GenerateKey(uint keyLength)
+        {
+            if (keyLength % 8 != 0)
+                throw new ArgumentException("Length must be divisible by 8 to represent a bit number");
+            var key = new byte[keyLength / 8];
+            using (var randomGenerator = RandomNumberGenerator.Create()) 
+            {
+                randomGenerator.GetBytes(key);
+                return key;
+            }
+        }
+    }
+}

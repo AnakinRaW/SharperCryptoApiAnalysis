@@ -1,0 +1,53 @@
+﻿<!--
+    // Copyright (c) .NET Foundation. All rights reserved.
+    // Licensed under the Apache License, Version 2.0. See Credits.txt in the project root for license information.
+    // Original file: NuGet.Client/src/NuGet.Clients/NuGet.PackageManagement.UI/Xamls/FilterLabel.xaml
+    // Modifications made: simplified and refactored
+-->
+<UserControl
+    x:Class="SharperCryptoApiAnalysis.Vsix.Controls.FilterLabel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SharperCryptoApiAnalysis.Vsix.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+    xmlns:shell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+    d:DesignHeight="25"
+    d:DesignWidth="100"
+    mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </FrameworkElement.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <controls:TabItemButton Grid.Row="0" Click="ButtonClicked">
+            <Control.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Control.Template>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    x:Name="TextBlock"
+                    Margin="0"
+                    Padding="0"
+                    FontSize="14"
+                    Foreground="{DynamicResource {x:Static shell:VsBrushes.BrandedUITextKey}}"
+                    MouseEnter="OnTextBlockMouseEnter"
+                    MouseLeave="OnTextBlockMouseLeave"
+                    Text="{Binding Text}" />
+            </StackPanel>
+        </controls:TabItemButton>
+        <Rectangle
+            x:Name="Underline"
+            Grid.Row="1"
+            Height="3"
+            Margin="0"
+            Fill="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemActiveBrushKey}}"
+            Visibility="{Binding Selected, Converter={StaticResource BooleanToVisibilityConverter}}" />
+    </Grid>
+</UserControl>

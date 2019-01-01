@@ -1,0 +1,184 @@
+﻿<UserControl
+    x:Class="SharperCryptoApiAnalysis.Vsix.Controls.AnalysisReportView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:SharperCryptoApiAnalysis.Shell.Interop.Converters;assembly=SharperCryptoApiAnalysis.Shell.Interop"
+    xmlns:core="clr-namespace:SharperCryptoApiAnalysis.Core;assembly=SharperCryptoApiAnalysis.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="600"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <FrameworkElement.Resources>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </FrameworkElement.Resources>
+
+    <Grid Margin="24,0,7,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            MinHeight="32"
+            Margin="0,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="6" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="6" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    FontSize="16"
+                    Text="Information for Report:" />
+                <TextBlock
+                    Grid.Column="2"
+                    HorizontalAlignment="Left"
+                    FontSize="16"
+                    Text="{Binding ActiveReport.Id}" />
+
+            </Grid>
+            <TextBlock
+                Grid.Row="2"
+                HorizontalAlignment="Left"
+                Text="{Binding ActiveReport.Summary}"
+                TextWrapping="Wrap" />
+
+            <TextBlock
+                Grid.Row="4"
+                HorizontalAlignment="Left"
+                TextWrapping="Wrap"
+                Visibility="{Binding ActiveReport.MoreDetailsUrl, Converter={StaticResource NullToVisibilityConverter}}">
+                <Hyperlink NavigateUri="{Binding ActiveReport.MoreDetailsUrl}" RequestNavigate="OnNavigateRequested">Click for more information</Hyperlink>
+            </TextBlock>
+        </Grid>
+
+        <Border
+            Grid.Row="1"
+            BorderBrush="DarkGray"
+            BorderThickness="0,1,0,0" />
+
+        <Grid Grid.Row="2" Margin="0,12,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0,8,0,0">
+                <TextBlock FontWeight="Bold" Text="Description:" />
+                <TextBlock Text="{Binding ActiveReport.Description}" TextWrapping="Wrap" />
+            </StackPanel>
+
+            <DockPanel
+                Grid.Row="1"
+                Margin="0,8,0,0"
+                LastChildFill="True">
+                <TextBlock
+                    DockPanel.Dock="Left"
+                    FontWeight="Bold"
+                    Text="Category:" />
+                <TextBlock
+                    Margin="6,0,0,0"
+                    DockPanel.Dock="Left"
+                    Text="{Binding ActiveReport.Category}" />
+            </DockPanel>
+
+            <DockPanel
+                Grid.Row="2"
+                Margin="0,8,0,0"
+                LastChildFill="True">
+                <TextBlock
+                    DockPanel.Dock="Left"
+                    FontWeight="Bold"
+                    Text="Exploitability:" />
+                <TextBlock
+                    Margin="6,0,0,0"
+                    DockPanel.Dock="Left"
+                    Text="{Binding ActiveReport.Exploitability}" />
+            </DockPanel>
+
+            <DockPanel
+                Grid.Row="3"
+                Margin="0,8,0,0"
+                LastChildFill="True">
+                <TextBlock
+                    DockPanel.Dock="Left"
+                    FontWeight="Bold"
+                    Text="Possible Exposed security goal:" />
+                <TextBlock
+                    Margin="6,0,0,0"
+                    DockPanel.Dock="Left"
+                    Text="{Binding ActiveReport.ExposedSecurityGoals}" />
+            </DockPanel>
+
+            <StackPanel Grid.Row="4" Margin="0,8,0,0">
+                <TextBlock FontWeight="Bold" Text="Solution Remarks:" />
+                <TextBlock Text="{Binding ActiveReport.SolutionRemarks}" TextWrapping="Wrap" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Margin="0,8,0,0">
+                <TextBlock FontWeight="Bold" Text="Related Links" />
+                <ListBox
+                    Background="Transparent"
+                    BorderThickness="0"
+                    ItemsSource="{Binding ActiveReport.RelatedLinks}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type core:NamedLink}">
+                            <TextBlock Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" ToolTip="{Binding Uri}">
+                                <Hyperlink NavigateUri="{Binding Uri}" RequestNavigate="OnNavigateRequested">
+                                    <TextBlock Text="{Binding DisplayName}" />
+                                </Hyperlink>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <ContentPresenter Margin="0,3" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </StackPanel>
+
+            <Expander
+                Grid.Row="6"
+                Margin="0,24,0,0"
+                ExpandDirection="Down"
+                Visibility="{Binding ActiveReport.AdditionalContent, Converter={StaticResource NullToVisibilityConverter}}">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="Show More" />
+                </HeaderedContentControl.Header>
+                <ContentPresenter Content="{Binding ActiveReport.AdditionalContent}" />
+            </Expander>
+
+
+        </Grid>
+    </Grid>
+</UserControl>

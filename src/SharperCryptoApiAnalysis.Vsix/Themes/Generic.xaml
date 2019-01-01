@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SharperCryptoApiAnalysis;component/Themes/ExtensionListBox.xaml" />
+        <ResourceDictionary Source="/SharperCryptoApiAnalysis;component/Themes/ExtensionItemControl.xaml" />
+        <ResourceDictionary Source="/SharperCryptoApiAnalysis;component/Themes/ReportsListBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

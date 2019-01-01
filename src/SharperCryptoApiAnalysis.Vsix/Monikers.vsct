@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable">
+
+  <Symbols>
+    <GuidSymbol name="SharperCryptoApiAnalysisImagesGuid" value="{670405d6-ff01-49b5-a000-e89806716e6a}" >
+      <IDSymbol name="application" value="1" />
+      <IDSymbol name="test" value="2" />
+    </GuidSymbol>
+  </Symbols>
+
+</CommandTable>

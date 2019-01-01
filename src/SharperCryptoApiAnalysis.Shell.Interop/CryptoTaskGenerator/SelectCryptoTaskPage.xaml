@@ -1,0 +1,64 @@
+﻿<UserControl
+    x:Class="SharperCryptoApiAnalysis.Vsix.Controls.SelectCryptoTaskPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:SharperCryptoApiAnalysis.Shell.Interop.Converters"
+    xmlns:cryptoTaskGenerator="clr-namespace:SharperCryptoApiAnalysis.Shell.Interop.CryptoTaskGenerator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="400"
+    d:DesignWidth="600"
+    mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <converters:CompatibleProjectTypesToTextConverter x:Key="CompatibleProjectTypesToTextConverter" />
+    </FrameworkElement.Resources>
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="12" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Select a Task:" />
+        <ComboBox
+            Grid.Row="0"
+            Grid.Column="2"
+            MinWidth="150"
+            ItemsSource="{Binding DataModel.AvailableTasks}"
+            SelectedItem="{Binding DataModel.SelectedTaskItem, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type cryptoTaskGenerator:ICryptoCodeGenerationTask}">
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="Task Description:" />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="2"
+            Text="{Binding DataModel.SelectedTaskItem.Description}"
+            TextWrapping="Wrap" />
+
+
+        <Grid Grid.Row="3" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="0,0,30,0" Text="Compatibility:" />
+            <TextBlock
+                Grid.Column="2"
+                Margin="6,0,0,0"
+                Text="{Binding DataModel.SelectedTaskItem.CompatibleProjectTypes, Converter={StaticResource CompatibleProjectTypesToTextConverter}}" />
+        </Grid>
+    </Grid>
+</UserControl>

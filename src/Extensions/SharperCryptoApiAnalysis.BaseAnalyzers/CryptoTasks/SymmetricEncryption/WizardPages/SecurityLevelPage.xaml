@@ -1,0 +1,85 @@
+﻿<UserControl
+    x:Class="SharperCryptoApiAnalysis.BaseAnalyzers.CryptoTasks.SymmetricEncryption.WizardPages.SecurityLevelPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:SharperCryptoApiAnalysis.BaseAnalyzers.Shell.Converters"
+    xmlns:cryptoTasks="clr-namespace:SharperCryptoApiAnalysis.BaseAnalyzers.CryptoTasks"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <converters:SecurityLevelToNameConverter x:Key="SecurityLevelToNameConverter" />
+    </FrameworkElement.Resources>
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="12" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Security Level:" />
+        <ComboBox
+            Grid.Row="0"
+            Grid.Column="2"
+            ItemsSource="{Binding SecurityLevels}"
+            SelectedIndex="1"
+            SelectedItem="{Binding DataModel.SelectedSecurityLevel, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type cryptoTasks:SecurityLevel}">
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <Binding Converter="{StaticResource SecurityLevelToNameConverter}" />
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Fast Computation:" />
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="2"
+                Text="This level provides a set of configurations to assure a minimum level of secure data encryption. This level is optimized for fast execution and might not be usable for top secret data."
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="Wrap" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Default security:" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="2"
+                Text="This is the default configuration and provides a sufficient level of security. It uses the cryptographic Methods the .NET provides."
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="Wrap" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="Strong security:" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="2"
+                Text="Use this level for top secret data. It provides the maximum security level the .NET APIs can offer. With this level the API is told to use the native operating systems cryptographic functions. This level generates FIPS 140-2 compliant encryption."
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="Wrap" />
+        </Grid>
+    </Grid>
+</UserControl>

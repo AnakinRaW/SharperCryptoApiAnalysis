@@ -1,0 +1,291 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:commands="clr-namespace:SharperCryptoApiAnalysis.Vsix.Commands"
+    xmlns:controls="clr-namespace:SharperCryptoApiAnalysis.Vsix.Controls"
+    xmlns:converters="clr-namespace:SharperCryptoApiAnalysis.Vsix.Ui.Converters"
+    xmlns:converters1="clr-namespace:SharperCryptoApiAnalysis.Shell.Interop.Converters;assembly=SharperCryptoApiAnalysis.Shell.Interop"
+    xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+    xmlns:imaging1="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+    xmlns:shell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+    xmlns:toolWindowPane="clr-namespace:SharperCryptoApiAnalysis.Vsix.Views.ToolWindowPane">
+
+
+    <converters1:NullToBooleanConverter x:Key="NullToBooleanConverter" />
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+
+    <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="True">
+                        <ContentPresenter
+                            x:Name="contentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Focusable="False"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static shell:VsBrushes.ToolWindowButtonHoverActiveKey}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static shell:VsBrushes.ToolWindowButtonHoverActiveBorderKey}}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static shell:VsBrushes.ToolWindowButtonDownKey}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static shell:VsBrushes.ToolWindowButtonDownBorderKey}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="controls:ExtensionItemControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ExtensionItemControl}">
+                    <Border
+                        Padding="0,8,0,0"
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                        BorderThickness="0">
+                        <Grid Margin="16,0,7,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <CheckBox
+                                Grid.Column="0"
+                                Margin="0,12,8,0"
+                                VerticalAlignment="Top"
+                                IsChecked="{Binding Selected}"
+                                Visibility="{Binding CheckBoxesEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:ExtensionListBox}}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <Grid
+                                MinHeight="48"
+                                VerticalAlignment="Top"
+                                Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="36" MaxHeight="36" />
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                    <TextBlock
+                                        VerticalAlignment="Top"
+                                        FontSize="16"
+                                        FontWeight="Bold"
+                                        Text="{Binding ExtensionMetadata.Name}"
+                                        TextTrimming="CharacterEllipsis"
+                                        TextWrapping="NoWrap" />
+                                    <TextBlock Margin="5,4,0,0" Text="{Binding ExtensionMetadata.Author}" />
+                                </StackPanel>
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="4" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Text="{Binding ExtensionMetadata.Summary}"
+                                        TextTrimming="CharacterEllipsis"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </Grid>
+                            <Grid
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Top"
+                                Column="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <Grid
+                                    HorizontalAlignment="Right"
+                                    Column="0"
+                                    Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <imaging:CrispImage
+                                        x:Name="InstalledIndicator"
+                                        Grid.Column="0"
+                                        Width="12"
+                                        Height="12"
+                                        VerticalAlignment="Center"
+                                        Moniker="{x:Static imaging1:KnownMonikers.StatusOK}"
+                                        Visibility="Visible" />
+                                    <TextBlock
+                                        x:Name="InstalledVersionTextBlock"
+                                        Grid.Column="1"
+                                        Margin="4,0,4,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding InstalledVersion, StringFormat={}v{0}}"
+                                        ToolTip="Installed Version"
+                                        Visibility="Hidden" />
+                                </Grid>
+
+                                <TextBlock
+                                    x:Name="VersionToInstallTextBlock"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="2,0,4,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding LatestVersion, StringFormat={}v{0}}"
+                                    TextAlignment="Right"
+                                    ToolTip="Latest Version"
+                                    Visibility="Hidden" />
+
+                                <Button
+                                    x:Name="UninstallButton"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Command="{x:Static commands:ExtensionCommands.UninstallExtensionCommand}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource ButtonStyle}"
+                                    ToolTip="Uninstall Extension"
+                                    Visibility="Hidden">
+                                    <imaging:CrispImage
+                                        Width="16"
+                                        Height="16"
+                                        Moniker="{x:Static imaging1:KnownMonikers.StatusOffline}" />
+                                </Button>
+                                <Button
+                                    x:Name="InstallButton"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Command="{x:Static commands:ExtensionCommands.InstallExtensionCommand}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource ButtonStyle}"
+                                    ToolTip="Install Extension"
+                                    Visibility="Hidden">
+                                    <imaging:CrispImage
+                                        Width="16"
+                                        Height="16"
+                                        Moniker="{x:Static imaging1:KnownMonikers.MoveDown}" />
+                                </Button>
+
+                                <TextBlock
+                                    x:Name="LatestVersionTextBlock"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="2,5,4,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding LatestVersion, StringFormat={}v{0}}"
+                                    TextAlignment="Right"
+                                    ToolTip="Latest Version"
+                                    Visibility="Hidden" />
+
+                                <Button
+                                    x:Name="UpdateButton"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0,5,0,0"
+                                    Command="{x:Static commands:ExtensionCommands.InstallExtensionCommand}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource ButtonStyle}"
+                                    ToolTip="Update Extension"
+                                    Visibility="Hidden">
+                                    <imaging:CrispImage
+                                        Width="16"
+                                        Height="16"
+                                        Moniker="{x:Static imaging1:KnownMonikers.StatusReady}" />
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                <Condition Binding="{Binding Status}" Value="NotInstalled" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="InstallButton" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding InstalledVersion, Converter={StaticResource NullToBooleanConverter}}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="InstalledVersionTextBlock" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Status}" Value="NotInstalled" />
+                                <Condition Binding="{Binding LatestVersion, Converter={StaticResource NullToBooleanConverter}}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="VersionToInstallTextBlock" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Status}" Value="UpdateAvailable" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="LatestVersionTextBlock" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                <Condition Binding="{Binding Status}" Value="Installed" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="UninstallButton" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                <Condition Binding="{Binding Status}" Value="UpdateAvailable" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="UninstallButton" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                <Condition Binding="{Binding Status}" Value="UpdateAvailable" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="UpdateButton" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <DataTrigger Binding="{Binding ReadOnly}" Value="True">
+                            <Setter TargetName="UpdateButton" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="UninstallButton" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="InstallButton" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding InstalledVersion}" Value="{x:Null}">
+                            <Setter TargetName="InstalledIndicator" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
