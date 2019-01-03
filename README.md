@@ -1,6 +1,6 @@
 # Sharper Crypto-API Analysis
 
-***Sharper Crypto-API Analysis*** is a static code analysis plugin vor Visual Studio specialized for the .NTE crypto-API available `System.Security.Cryptography`. 
+***Sharper Crypto-API Analysis*** is a static code analysis plugin vor Visual Studio specialized for the .NET crypto-API available `System.Security.Cryptography`. 
 It shall detect common coding error programmers do. Target language is C#.
 
 ## Introduction
