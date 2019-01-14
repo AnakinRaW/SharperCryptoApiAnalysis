@@ -7,7 +7,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
 {
     public abstract class GitHostServer : IGitHostServer
     {
-        protected string RawFilesPathBase => Url.Combine(RawFileDomain, LocalRepoPath, BranchSubPath);
+        protected abstract string RawFilesPathBase { get; }
 
         protected abstract string RawFileDomain { get; }
 
