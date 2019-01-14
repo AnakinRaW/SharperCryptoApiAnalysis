@@ -3,6 +3,7 @@ using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Input;
 using ModernApplicationFramework.Input.Command;
+using SharperCryptoApiAnalysis.Connectivity.Exceptions;
 using SharperCryptoApiAnalysis.Interop.Configuration;
 using SharperCryptoApiAnalysis.Interop.Services;
 using SharperCryptoApiAnalysis.Interop.Settings;
@@ -93,12 +94,20 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels
             try
             {
                 await ConfigurationManager.ConnectionManager.Connect(new Uri(RepositoryPath));
+                StoreSettings();
             }
-            catch (Exception e)
+            catch (ConnectionHostNotSupportedException)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("The specified domain is not supported.");
             }
-            StoreSettings();
+            catch (HostRepositoryNotFoundException)
+            {
+                MessageBox.Show("The specified repository is not available.");
+            }
+            catch (RepositoryNotHostingSharperCryptoApiAnalysisException)
+            {
+                MessageBox.Show("The specified repository does not have any configuration for Sharper Crypto-API Analysis.");
+            }
         }
 
         private void StoreSettings()
