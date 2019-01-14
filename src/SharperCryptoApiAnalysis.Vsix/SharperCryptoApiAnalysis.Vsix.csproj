@@ -104,6 +104,8 @@
     <ProjectReference Include="..\SharperCryptoApiAnalysis.Connectivity\SharperCryptoApiAnalysis.Connectivity.csproj">
       <Project>{a0355829-1981-4cfe-814d-462a7b256d60}</Project>
       <Name>SharperCryptoApiAnalysis.Connectivity</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
     <ProjectReference Include="..\SharperCryptoApiAnalysis.Core\SharperCryptoApiAnalysis.Core.csproj">
       <Project>{245f2770-3b00-4c92-9466-9c33fcf09476}</Project>

@@ -1,9 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace SharperCryptoApiAnalysis.Connectivity.Servers
 {
     public interface IGitHostServer
     {
+        void SetBaseAddress(Uri address);
+
         Task<bool> IsHostingSharperCryptoApiAnalysis();
 
         Task<string> DownloadString(string resource);

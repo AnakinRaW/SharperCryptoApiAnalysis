@@ -13,16 +13,15 @@ namespace SharperCryptoApiAnalysis.Connectivity.Servers
 
         protected virtual string BranchSubPath => "master";
 
-        protected string LocalRepoPath { get; }
+        protected string LocalRepoPath { get; private set; }
 
-        protected Uri BaseHttpAddress { get; }
+        protected Uri BaseHttpAddress { get; private set; }
 
-        protected GitHostServer(Uri baseAddress)
+        public void SetBaseAddress(Uri baseAddress)
         {
             BaseHttpAddress = baseAddress;
             LocalRepoPath = baseAddress.LocalPath.TrimStart('/');
         }
-
 
         public async Task<bool> IsHostingSharperCryptoApiAnalysis()
         {

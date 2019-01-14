@@ -4,9 +4,11 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using Microsoft.VisualStudio.Shell;
 using SharperCryptoApiAnalysis.Connectivity.Exceptions;
 using SharperCryptoApiAnalysis.Connectivity.Servers;
 using SharperCryptoApiAnalysis.Interop.Services;
+using Task = System.Threading.Tasks.Task;
 
 namespace SharperCryptoApiAnalysis.Connectivity
 {
@@ -22,6 +24,8 @@ namespace SharperCryptoApiAnalysis.Connectivity
 
         public Uri Address { get; private set; }
 
+        private GitServiceRegistry GitServiceRegistry { get; }
+
         public bool IsConnected
         {
             get => _isConnected;
@@ -36,19 +40,22 @@ namespace SharperCryptoApiAnalysis.Connectivity
         public ConnectionManager()
         {
             DefaultServer = new DefaultServer();
+            var provider = (ISharperCryptoAnalysisServiceProvider) Package.GetGlobalService(typeof(ISharperCryptoAnalysisServiceProvider));
+            GitServiceRegistry = provider.ExportProvider.GetExportedValueOrDefault<GitServiceRegistry>();
         }
 
         public async Task Connect(Uri remoteAddress)
         {
             if (IsConnected)
                 Disconnect();
-
+    
             var hostName = remoteAddress.Host;
 
-            if (!SupportedConnections.IsConnectionHostSupported(hostName, out var host))
+            var hostServer = GitServiceRegistry.GetServiceFromHostUrl(hostName);
+            if (hostServer == null)
                 throw new ConnectionHostNotSupportedException();
 
-            var hostServer = SupportedConnections.CreateHostServer(host, remoteAddress);
+            hostServer.SetBaseAddress(remoteAddress);
 
             if (!hostServer.IsRunning())
                 throw new HostRepositoryNotFoundException();
