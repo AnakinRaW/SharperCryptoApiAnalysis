@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SharperCryptoApiAnalysis.Connectivity
+namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
 {
     /// <summary>
     /// From https://github.com/jean-lourenco/UrlCombine
@@ -9,6 +9,12 @@ namespace SharperCryptoApiAnalysis.Connectivity
     /// </summary>
     public static class Url
     {
+        /// <summary>
+        /// Combines a base URL and a sub path.
+        /// </summary>
+        /// <param name="baseUrl">The base URL.</param>
+        /// <param name="relativeUrl">The sub path.</param>
+        /// <returns>The combined URL.</returns>
         public static string Combine(string baseUrl, string relativeUrl)
         {
             if (string.IsNullOrWhiteSpace(baseUrl))
@@ -23,6 +29,12 @@ namespace SharperCryptoApiAnalysis.Connectivity
             return $"{baseUrl}/{relativeUrl}";
         }
 
+        /// <summary>
+        /// Combines a base URL and multiple sub paths.
+        /// </summary>
+        /// <param name="baseUrl">The base URL.</param>
+        /// <param name="relativePaths">The sub paths</param>
+        /// <returns>The combined URL.</returns>
         public static string Combine(string baseUrl, params string[] relativePaths)
         {
             if (string.IsNullOrWhiteSpace(baseUrl))

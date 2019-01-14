@@ -177,18 +177,11 @@
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Exceptions\NotConnectedException.cs" />
     <Compile Include="Servers\DefaultServer.cs" />
-    <Compile Include="Servers\GitHostServer.cs" />
     <Compile Include="Servers\GitHubGitHostServer.cs" />
     <Compile Include="Exceptions\HostRepositoryNotFoundException.cs" />
-    <Compile Include="Servers\GitServiceAttribute.cs" />
-    <Compile Include="Servers\IGitHostServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exceptions\RepositoryNotHostingSharperCryptoApiAnalysisException.cs" />
-    <Compile Include="Servers\IGitServiceMetadata.cs" />
-    <Compile Include="Servers\GitServiceRegistry.cs" />
-    <Compile Include="SupportedHosts.cs" />
-    <Compile Include="Url.cs" />
-    <Compile Include="UrlRequestOptions.cs" />
+    <Compile Include="GitServiceRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharperCryptoApiAnalysis.Interop\SharperCryptoApiAnalysis.Interop.csproj">
@@ -198,6 +191,10 @@
     <ProjectReference Include="..\SharperCryptoApiAnalysis.Core\SharperCryptoApiAnalysis.Core.csproj">
       <Project>{245F2770-3B00-4C92-9466-9C33FCF09476}</Project>
       <Name>SharperCryptoApiAnalysis.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharperCryptoApiAnalysis.Shell.Interop\SharperCryptoApiAnalysis.Shell.Interop.csproj">
+      <Project>{f011d2c6-b4b2-449c-ac1f-995921c5e58a}</Project>
+      <Name>SharperCryptoApiAnalysis.Shell.Interop</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

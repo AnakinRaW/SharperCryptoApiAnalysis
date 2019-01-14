@@ -3,7 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using SharperCryptoApiAnalysis.Core;
 
-namespace SharperCryptoApiAnalysis.Connectivity.Servers
+namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
 {
     public abstract class GitHostServer : IGitHostServer
     {

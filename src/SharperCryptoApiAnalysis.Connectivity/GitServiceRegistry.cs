@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using SharperCryptoApiAnalysis.Shell.Interop.Connectivity;
 
-namespace SharperCryptoApiAnalysis.Connectivity.Servers
+namespace SharperCryptoApiAnalysis.Connectivity
 {
     [Export(typeof(GitServiceRegistry))]
     internal class GitServiceRegistry

@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.Shell;
 using SharperCryptoApiAnalysis.Connectivity.Exceptions;
 using SharperCryptoApiAnalysis.Connectivity.Servers;
 using SharperCryptoApiAnalysis.Interop.Services;
+using SharperCryptoApiAnalysis.Shell.Interop.Connectivity;
 using Task = System.Threading.Tasks.Task;
 
 namespace SharperCryptoApiAnalysis.Connectivity

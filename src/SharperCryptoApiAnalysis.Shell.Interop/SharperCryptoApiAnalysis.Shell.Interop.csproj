@@ -130,6 +130,12 @@
     <Compile Include="Commands\IUninstallExtensionCommand.cs" />
     <Compile Include="Commands\IVsCommand.cs" />
     <Compile Include="Commands\IVsCommandBase.cs" />
+    <Compile Include="Connectivity\GitHostServer.cs" />
+    <Compile Include="Connectivity\GitServiceAttribute.cs" />
+    <Compile Include="Connectivity\IGitHostServer.cs" />
+    <Compile Include="Connectivity\IGitServiceMetadata.cs" />
+    <Compile Include="Connectivity\Url.cs" />
+    <Compile Include="Connectivity\UrlRequestOptions.cs" />
     <Compile Include="Converters\CompatibleProjectTypesToTextConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\InverseNullToVisibilityConverter.cs" />
@@ -196,6 +202,10 @@
     <ProjectReference Include="..\..\submodules\ModernApplicationFramework\src\ModernApplicationFramework.Input\ModernApplicationFramework.Input.csproj">
       <Project>{57ACF623-794E-41E8-8033-1544D209A4E1}</Project>
       <Name>ModernApplicationFramework.Input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharperCryptoApiAnalysis.Core\SharperCryptoApiAnalysis.Core.csproj">
+      <Project>{245f2770-3b00-4c92-9466-9c33fcf09476}</Project>
+      <Name>SharperCryptoApiAnalysis.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharperCryptoApiAnalysis.Interop\SharperCryptoApiAnalysis.Interop.csproj">
       <Project>{D04809C9-3333-450C-ADFD-298CBA559845}</Project>
