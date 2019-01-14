@@ -90,7 +90,7 @@ Code generation wizard:
 ### Installation
 
 1. Fulfill the obove mentioned requirements.
-2. Download and run latest release on this page LINK:
+2. Download and run latest [release](https://github.com/AnakinSklavenwalker/SharperCryptoApiAnalysis/releases):
 3. Open Visual Studio and the tool is ready to use.
 
 ## Compiling
