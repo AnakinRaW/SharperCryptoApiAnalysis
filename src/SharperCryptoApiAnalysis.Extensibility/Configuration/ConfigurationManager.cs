@@ -96,15 +96,11 @@ namespace SharperCryptoApiAnalysis.Extensibility.Configuration
         private async void ConnectionManager_Connected(object sender, EventArgs e)
         {
             await LoadConfiguration();
-
-            var last = Settings.ConfigurationRepositoryPath;
-            var current = ConnectionManager.Address;
-
             if (Configuration.SyncMode == ConfigSyncMode.Hard)
                 Settings.Severity = Configuration.AnalysisSeverity;
             else
             {
-                if (last != current.AbsoluteUri)
+                if (Settings.AutoSeverityChange)
                     Settings.Severity = Configuration.AnalysisSeverity;
             }
             Settings.Save();

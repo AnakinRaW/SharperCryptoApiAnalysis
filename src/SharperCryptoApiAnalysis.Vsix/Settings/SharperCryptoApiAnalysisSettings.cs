@@ -16,6 +16,7 @@ namespace SharperCryptoApiAnalysis.Vsix.Settings
         private bool _showStartupWindow;
         private string _configurationRepositoryPath;
         private AnalysisSeverity _severity;
+        private bool _disableAutoSeverityChange;
 
         public bool ShowStartupWindow
         {
@@ -25,6 +26,17 @@ namespace SharperCryptoApiAnalysis.Vsix.Settings
                 if (value == _showStartupWindow)
                     return;
                 _showStartupWindow = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool AutoSeverityChange
+        {
+            get => _disableAutoSeverityChange;
+            set
+            {
+                if (value == _disableAutoSeverityChange) return;
+                _disableAutoSeverityChange = value;
                 OnPropertyChanged();
             }
         }
@@ -73,13 +85,14 @@ namespace SharperCryptoApiAnalysis.Vsix.Settings
             ConfigurationRepositoryPath = _settingsStore.Read(nameof(ConfigurationRepositoryPath), string.Empty);
             var s = _settingsStore.Read(nameof(Severity), 0);
             Severity = (AnalysisSeverity) s;
-
+            AutoSeverityChange = _settingsStore.Read(nameof(AutoSeverityChange), true);
             LoadMutedAnalyzers();
         }
 
         private void SaveSettings()
         {
             _settingsStore.Write(nameof(ShowStartupWindow), ShowStartupWindow);
+            _settingsStore.Write(nameof(AutoSeverityChange), AutoSeverityChange);
             _settingsStore.Write(nameof(ConfigurationRepositoryPath), ConfigurationRepositoryPath);
             _settingsStore.Write(nameof(Severity), (int) Severity);
             SaveMutedAnalyzers();

@@ -19,6 +19,8 @@ namespace SharperCryptoApiAnalysis.Interop.Settings
         /// </value>
         bool ShowStartupWindow { get; set; }
 
+        bool AutoSeverityChange { get; set; }
+
         /// <summary>
         /// The path to the configuration repository.
         /// </summary>

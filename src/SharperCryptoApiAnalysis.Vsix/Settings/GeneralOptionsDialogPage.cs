@@ -16,10 +16,6 @@ namespace SharperCryptoApiAnalysis.Vsix.Settings
             _settings ?? (_settings = (ISharperCryptoApiAnalysisSettings) Site.GetService(
                 typeof(ISharperCryptoApiAnalysisSettings)));
 
-        private IAnalyzerManager AnalyzerManager =>
-            _analyzerManager ?? (_analyzerManager = (IAnalyzerManager) Site.GetService(
-                typeof(IAnalyzerManager)));
-
         protected override UIElement Child => _dialogControl ?? (_dialogControl = new GeneralOptionsDialogControl(Settings));
 
         protected override void OnActivate(CancelEventArgs e)
