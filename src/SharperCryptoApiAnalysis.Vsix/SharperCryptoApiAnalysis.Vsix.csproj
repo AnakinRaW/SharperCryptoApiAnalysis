@@ -193,6 +193,7 @@
     <Compile Include="Ui\Converters\BoolToConnectedStringConverter.cs" />
     <Compile Include="Ui\Converters\CanvasScaleConverter.cs" />
     <Compile Include="Ui\Converters\InverseConnectedToVisibilityConverter.cs" />
+    <Compile Include="Ui\Converters\IsBaseExtensionToBooleanConverter.cs" />
     <Compile Include="Ui\Converters\StringNotEmptyToVisibilityConverter.cs" />
     <Compile Include="Ui\SharperCryptoApiAnalysisPane.cs" />
     <Compile Include="Commands\SharperCryptoAnalysisPaneCommand.cs" />

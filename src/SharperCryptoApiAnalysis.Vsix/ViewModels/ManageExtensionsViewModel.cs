@@ -165,6 +165,7 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels
             var uiElement = infoBarUIFactory.CreateInfoBar(infoBar);
             InfoBarHost.AddInfoBar(uiElement);
             uiElement.Advise(this, out _cookie);
+            _currentInfoBar = uiElement;
         }
 
 

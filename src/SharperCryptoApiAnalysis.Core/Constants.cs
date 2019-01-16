@@ -25,6 +25,6 @@
         /// <summary>
         /// The assembly name of the default extension 
         /// </summary>
-        public const string DefaultAnalyzerAssemblyName = "SharperCryptoApiAnalysis.BaseAnalyzers";
+        public const string DefaultAnalyzerAssemblyName = "SharperCryptoApiAnalysis.BaseAnalyzers.dll";
     }
 }
