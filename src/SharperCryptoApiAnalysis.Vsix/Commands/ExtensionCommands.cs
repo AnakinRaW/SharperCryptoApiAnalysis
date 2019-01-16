@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using System.Reflection.Metadata;
 using System.Windows.Input;
 using ModernApplicationFramework.Input.Command;
+using SharperCryptoApiAnalysis.Core;
 using SharperCryptoApiAnalysis.Interop.Configuration;
 using SharperCryptoApiAnalysis.Interop.Extensibility;
 using SharperCryptoApiAnalysis.Interop.Services;
@@ -58,6 +60,10 @@ namespace SharperCryptoApiAnalysis.Vsix.Commands
             if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(ManageExtensionsView)).DefaultValue))
                 return true;
 #endif
+
+            if (arg is ExtensionItemListViewModel listViewModel &&
+                listViewModel.ExtensionMetadata.Name.Equals(Constants.DefaultAnalyzerAssemblyName))
+                return false;
 
             if (!ConfigurationManager.HasConfiguration || ConfigurationManager.Configuration.SyncMode == ConfigSyncMode.Hard)
                 return false;

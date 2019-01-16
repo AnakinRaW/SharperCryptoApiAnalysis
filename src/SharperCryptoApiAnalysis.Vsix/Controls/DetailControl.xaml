@@ -9,6 +9,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:SharperCryptoApiAnalysis.Shell.Interop.Converters;assembly=SharperCryptoApiAnalysis.Shell.Interop"
+    xmlns:converters1="clr-namespace:SharperCryptoApiAnalysis.Vsix.Ui.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:nuget="clr-namespace:SharperCryptoApiAnalysis.Vsix.Commands"
@@ -21,6 +22,7 @@
         <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
         <converters:InverseNullToVisibilityConverter x:Key="InverseNullToVisibilityConverter" />
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <converters1:InverseBaseExtensionToBooleanConverter x:Key="InverseBaseExtensionToBooleanConverter" />
 
         <Style
             x:Key="SelectableTextBlockStyle"
@@ -128,9 +130,8 @@
                     Command="{x:Static nuget:ExtensionCommands.UninstallExtensionCommand}"
                     CommandParameter="{Binding SelectedItem}"
                     Content="Uninstall"
+                    IsEnabled="{Binding SelectedItem.ExtensionMetadata, Converter={StaticResource InverseBaseExtensionToBooleanConverter}}"
                     Visibility="{Binding SelectedItem.InstalledVersion, Converter={StaticResource NullToVisibilityConverter}}" />
-
-
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="0"

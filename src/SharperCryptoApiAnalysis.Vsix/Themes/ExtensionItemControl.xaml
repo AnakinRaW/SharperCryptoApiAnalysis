@@ -13,6 +13,7 @@
 
     <converters1:NullToBooleanConverter x:Key="NullToBooleanConverter" />
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <converters:InverseBaseExtensionToBooleanConverter x:Key="InverseBaseExtensionToBooleanConverter" />
 
 
     <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
@@ -252,6 +253,11 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                 <Condition Binding="{Binding Status}" Value="Installed" />
+                                <Condition Value="True">
+                                    <Condition.Binding>
+                                        <Binding Converter="{StaticResource InverseBaseExtensionToBooleanConverter}" Path="ExtensionMetadata" />
+                                    </Condition.Binding>
+                                </Condition>
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="UninstallButton" Property="Visibility" Value="Visible" />
                         </MultiDataTrigger>
@@ -259,6 +265,11 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                 <Condition Binding="{Binding Status}" Value="UpdateAvailable" />
+                                <Condition Value="True">
+                                    <Condition.Binding>
+                                        <Binding Converter="{StaticResource InverseBaseExtensionToBooleanConverter}" Path="ExtensionMetadata" />
+                                    </Condition.Binding>
+                                </Condition>
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="UninstallButton" Property="Visibility" Value="Visible" />
                         </MultiDataTrigger>
