@@ -165,6 +165,8 @@ namespace SharperCryptoApiAnalysis.Extensibility
             foreach (var metadata in installedExtensions.Where(x =>
                 !availableExtensions.Extensions.Any(y => x.Name.Equals(y.Name) && x.InstallPath.Equals(y.InstallPath))))
             {
+                if (metadata.Name.Equals(Constants.DefaultAnalyzerAssemblyName))
+                    continue;
                 var action = ConfigurationManager.Configuration.SyncMode == ConfigSyncMode.Hard
                     ? ExtensionAction.Remove
                     : ExtensionAction.Uninstall;
