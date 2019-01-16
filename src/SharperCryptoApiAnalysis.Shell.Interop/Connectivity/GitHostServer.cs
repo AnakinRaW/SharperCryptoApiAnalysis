@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using SharperCryptoApiAnalysis.Core;
 
@@ -28,13 +29,19 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
             return await Task.FromResult(UrlExists(Constants.ConfigurationFileName, UrlRequestOptions.Default));
         }
 
-        public async Task<string> DownloadString(string resource)
+        public async Task<string> DownloadString(string resource, Encoding encoding)
         {
             var webClient = new WebClient();
             webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
             var address = Url.Combine(RawFilesPathBase, resource);
             var uri = new Uri(address);
-            return await webClient.DownloadStringTaskAsync(uri);
+            var value = await webClient.DownloadDataTaskAsync(uri);
+            return encoding.GetString(value);
+        }
+
+        public async Task<string> DownloadString(string resource)
+        {
+            return await DownloadString(resource, Encoding.UTF8);
         }
 
         public bool UrlExists(string resource)

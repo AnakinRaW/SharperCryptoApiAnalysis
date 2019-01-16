@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
@@ -26,6 +27,14 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
         /// <param name="resource">The resource.</param>
         /// <returns>The content.</returns>
         Task<string> DownloadString(string resource);
+
+        /// <summary>
+        /// Gets the content as a string of a resource.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
+        /// <param name="encoding">The expected encoding.</param>
+        /// <returns>The content.</returns>
+        Task<string> DownloadString(string resource, Encoding encoding);
 
         /// <summary>
         /// Checks if a resource or sub path exists on the repository.
