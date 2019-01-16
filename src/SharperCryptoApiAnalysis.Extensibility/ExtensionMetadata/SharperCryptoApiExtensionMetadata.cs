@@ -76,7 +76,8 @@ namespace SharperCryptoApiAnalysis.Extensibility.ExtensionMetadata
                 throw new ArgumentNullException(nameof(relativeBasePath));
 
             var installPath = PathUtilities.GetRelativePath(relativeBasePath, filePath);
-            var name = Path.GetFileNameWithoutExtension(filePath);
+            var nameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
+            var name = Path.GetFileName(filePath);
             var fileExtension = Path.GetExtension(filePath);
 
             ExtensionType type;
@@ -94,7 +95,7 @@ namespace SharperCryptoApiAnalysis.Extensibility.ExtensionMetadata
             }
 
             //TODO: Not sure if this is a good idea but for now it somehow replaces some better chained/multiple configurations where this assembly is included.
-            if (name.Equals(Constants.DefaultAnalyzerAssemblyName))
+            if (nameWithoutExtension.Equals(Constants.DefaultAnalyzerAssemblyName))
                 type = ExtensionType.Assembly | ExtensionType.Analyzer | ExtensionType.MefComponent;
 
             string summary;
