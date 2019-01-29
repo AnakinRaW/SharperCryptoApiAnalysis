@@ -83,7 +83,7 @@ Code generation wizard:
 ### Requirements
 
 - Microsoft Windows 7, 8, 8.1, 10.
-- Visual Studio 2017 (Enterprise/Professional/Community) [older or newer versions are untested]
+- Visual Studio 2017, 2019 (Enterprise/Professional/Community) [older versions are untested]
 - Any C# project the tool shall analyze
 - Supported project types: .NET Standard 2.0 compatible runtimes (e.g.: .NET Core 2.0, .NET Framework 4.6.1+)
 
