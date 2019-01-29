@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="809692dc-3c26-406b-990a-caf424015d57" Version="1.0.0.0" Language="de-DE" Publisher="Sebastian Leuer" />
+        <Identity Id="809692dc-3c26-406b-990a-caf424015d57" Version="1.0.0.19013" Language="de-DE" Publisher="AnakinSklavenwalker" />
         <DisplayName>Sharper Crypto-Api Analysis</DisplayName>
         <Description xml:space="preserve">A static code analysis plugin that detects flaws in the usage of .NET's crypto APIs</Description>
         <MoreInfo>https://github.com/AnakinSklavenwalker/SharperCryptoApiAnalysis/</MoreInfo>

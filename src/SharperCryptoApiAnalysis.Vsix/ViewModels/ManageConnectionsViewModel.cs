@@ -17,7 +17,7 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels
     public class ManageConnectionsViewModel : PanePageViewModelBase, IManageConnectionsViewModel
     {
         private string _repositoryPath;
-        private ISharperCryptoApiAnalysisSettings _settings;
+        private readonly ISharperCryptoApiAnalysisSettings _settings;
         public override string Title => "Manage Connection";
 
         public IConfigurationManager ConfigurationManager { get; }

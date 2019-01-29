@@ -5,10 +5,11 @@ using JetBrains.Annotations;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
 {
+    /// <inheritdoc />
     /// <summary>
-    /// Basic <see cref="IWizardPage"/> implementation
+    /// Basic <see cref="T:SharperCryptoApiAnalysis.Shell.Interop.Wizard.IWizardPage" /> implementation
     /// </summary>
-    /// <seealso cref="SharperCryptoApiAnalysis.Shell.Interop.Wizard.IWizardPage" />
+    /// <seealso cref="T:SharperCryptoApiAnalysis.Shell.Interop.Wizard.IWizardPage" />
     public abstract class WizardPage : IWizardPage
     {
         private IWizardPage _nextPage;
@@ -16,21 +17,25 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
         private bool _canFinish;
         private object _dataModel;
 
+        /// <inheritdoc />
         /// <summary>
         /// The name of the page.
         /// </summary>
         public abstract string Name { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// The description of the page.
         /// </summary>
         public abstract string Description { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// The view of the page
         /// </summary>
         public abstract FrameworkElement View { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// The data model.
         /// </summary>
@@ -46,6 +51,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// The next page.
         /// </summary>
@@ -61,6 +67,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// The previous page.
         /// </summary>
@@ -76,6 +83,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether this page can finish the wizard.
         /// </summary>
@@ -93,6 +101,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Indicating whether this page has next page.
         /// </summary>
@@ -101,6 +110,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
         /// </value>
         public bool HasNextPage => NextPage != null;
 
+        /// <inheritdoc />
         /// <summary>
         /// Indicating whether this page has previous page.
         /// </summary>
@@ -109,18 +119,18 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
         /// </value>
         public bool HasPreviousPage => PreviousPage != null;
 
-        protected WizardPage(WizardPage previousPage, WizardPage nextPage, object dataModel)
+        protected WizardPage(IWizardPage previousPage, IWizardPage nextPage, object dataModel)
         {
             _previousPage = previousPage;
             _nextPage = nextPage;
             _dataModel = dataModel;
         }
 
-        protected WizardPage(WizardPage nextPage, object dataModel) : this(null, nextPage, dataModel)
+        protected WizardPage(IWizardPage nextPage, object dataModel) : this(null, nextPage, dataModel)
         {
         }
 
-        protected WizardPage(object dataModel, WizardPage previousPage) : this(previousPage, null, dataModel)
+        protected WizardPage(object dataModel, IWizardPage previousPage) : this(previousPage, null, dataModel)
         {
         }
 

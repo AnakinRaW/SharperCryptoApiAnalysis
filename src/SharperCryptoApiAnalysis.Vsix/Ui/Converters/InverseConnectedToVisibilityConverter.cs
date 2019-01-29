@@ -8,9 +8,7 @@ namespace SharperCryptoApiAnalysis.Vsix.Ui.Converters
     {
         protected override Visibility Convert(bool value, object parameter, CultureInfo culture)
         {
-            if (value)
-                return Visibility.Collapsed;
-            return Visibility.Visible;
+            return value ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 }

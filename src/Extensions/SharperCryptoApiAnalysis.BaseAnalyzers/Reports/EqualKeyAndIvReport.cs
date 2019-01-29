@@ -16,7 +16,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Reports
         private static readonly LocalizableString CategoryString = CommonAnalysisCategories.WeakConfiguration;
         private static readonly LocalizableString Remarks =
             "Assign different values to IV and Key Properties by using the dedicated GenerateIV() and GenerateKey() methods. " +
-            "If you plan to implement password based encryption you need to specify the key manually. Not that you should neither Hardcode the password or key nor " +
+            "If you plan to implement password based encryption you need to specify the key manually. Not that you should neither hardcode the password or key nor " +
             "use the password directly as the key.";
 
         private static readonly Exploitability ExploitabilityValue = Exploitability.High;

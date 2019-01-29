@@ -6,7 +6,7 @@ using SharperCryptoApiAnalysis.Interop.CodeAnalysis.Scoring;
 
 namespace SharperCryptoApiAnalysis.BaseAnalyzers.Reports
 {
-    public class HardcodedCredentialsReprot : AnalysisReport
+    public class HardcodedCredentialsReport : AnalysisReport
     {
         private static readonly LocalizableString SummaryString = "Hardcoded credentials";
 
@@ -28,7 +28,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Reports
         private static readonly NamedLink CweLink = new NamedLink("CWE-Entry about Hardcoded passwords", new Uri("http://cwe.mitre.org/data/definitions/259"));
         private static readonly NamedLink Cwe2Link = new NamedLink("CWE-Entry about Hardcoded credentials", new Uri("http://cwe.mitre.org/data/definitions/798"));
 
-        public HardcodedCredentialsReprot() : base(AnalysisIds.HardcodedCredentials, SummaryString.ToString(), DescriptionString.ToString(), CategoryString.ToString(),
+        public HardcodedCredentialsReport() : base(AnalysisIds.HardcodedCredentials, SummaryString.ToString(), DescriptionString.ToString(), CategoryString.ToString(),
             ExploitabilityValue, SecurityGoals, null, Remarks.ToString(), CweLink, Cwe2Link, HowToAttackLink)
         {
         }

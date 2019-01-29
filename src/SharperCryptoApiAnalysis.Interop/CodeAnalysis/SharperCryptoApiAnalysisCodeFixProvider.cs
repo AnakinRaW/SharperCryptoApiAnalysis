@@ -2,10 +2,11 @@
 
 namespace SharperCryptoApiAnalysis.Interop.CodeAnalysis
 {
+    /// <inheritdoc />
     /// <summary>
     /// A Codefix provider in Sharper Crypto-API Analysis
     /// </summary>
-    /// <seealso cref="Microsoft.CodeAnalysis.CodeFixes.CodeFixProvider" />
+    /// <seealso cref="T:Microsoft.CodeAnalysis.CodeFixes.CodeFixProvider" />
     public abstract class SharperCryptoApiAnalysisCodeFixProvider : CodeFixProvider
     {
 

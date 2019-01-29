@@ -24,12 +24,12 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Reports
 
         private static SecurityGoals SecurityGoals = SecurityGoals.Confidentiality;
 
-        private static readonly NamedLink Brutefoce = new NamedLink("How long does it take to brute force passwords with low cost factor", new Uri("https://cryptosense.com/blog/parameter-choice-for-pbkdf2/"));
+        private static readonly NamedLink Bruteforce = new NamedLink("How long does it take to brute force passwords with low cost factor", new Uri("https://cryptosense.com/blog/parameter-choice-for-pbkdf2/"));
         private static readonly NamedLink CweLink = new NamedLink("More about on cost factors and iteration count", new Uri("https://cwe.mitre.org/data/definitions/916.html"));
         private static readonly NamedLink Nist = new NamedLink("See NIST specification", new Uri("https://pages.nist.gov/800-63-3/sp800-63b.html#sec5"));
 
         public LowCostFactorReport() : base(AnalysisIds.LowCostFactor, SummaryString.ToString(), DescriptionString.ToString(), CategoryString.ToString(),
-            ExploitabilityValue, SecurityGoals, null, Remarks.ToString(), CweLink, Nist, Brutefoce)
+            ExploitabilityValue, SecurityGoals, null, Remarks.ToString(), CweLink, Nist, Bruteforce)
         {
         }
     }

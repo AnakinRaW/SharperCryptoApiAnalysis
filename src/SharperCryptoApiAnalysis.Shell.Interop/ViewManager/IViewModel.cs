@@ -2,6 +2,7 @@
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.ViewManager
 {
+    /// <inheritdoc />
     /// <summary>
     /// Base interface for all view models.
     /// </summary>

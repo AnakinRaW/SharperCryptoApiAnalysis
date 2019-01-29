@@ -241,7 +241,7 @@ namespace SharperCryptoApiAnalysis.Interop.CodeAnalysis.Extensions
                 value = (T)input;
                 return true;
             }
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
                 return false;
             }

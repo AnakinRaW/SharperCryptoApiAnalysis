@@ -3,6 +3,7 @@ using System.ComponentModel.Composition;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
 {
+    /// <inheritdoc />
     /// <summary>
     /// Metadata attribute to specify the domain URL of the Git Host Service
     /// </summary>

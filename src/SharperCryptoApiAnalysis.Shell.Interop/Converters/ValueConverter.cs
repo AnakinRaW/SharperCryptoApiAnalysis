@@ -4,12 +4,13 @@ using System.Windows.Data;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Converters
 {
+    /// <inheritdoc />
     /// <summary>
     /// Base class of a value converter
     /// </summary>
     /// <typeparam name="TSource">The type of the source.</typeparam>
     /// <typeparam name="TTarget">The type of the target.</typeparam>
-    /// <seealso cref="System.Windows.Data.IValueConverter" />
+    /// <seealso cref="T:System.Windows.Data.IValueConverter" />
     public class ValueConverter<TSource, TTarget> : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

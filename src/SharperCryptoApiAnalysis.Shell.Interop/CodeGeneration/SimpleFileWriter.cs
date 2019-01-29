@@ -6,10 +6,11 @@ using Microsoft.VisualStudio.Shell;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.CodeGeneration
 {
+    /// <inheritdoc />
     /// <summary>
     /// Async Text writer
     /// </summary>
-    /// <seealso cref="Microsoft.VisualStudio.PlatformUI.DisposableObject" />
+    /// <seealso cref="T:Microsoft.VisualStudio.PlatformUI.DisposableObject" />
     public class SimpleFileWriter : DisposableObject
     {
         /// <summary>

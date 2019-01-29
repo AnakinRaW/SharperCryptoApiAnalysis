@@ -1,5 +1,4 @@
-﻿using System;
-using System.Composition;
+﻿using System.Composition;
 using SharperCryptoApiAnalysis.Shell.Interop.CryptoTaskGenerator;
 
 namespace SharperCryptoApiAnalysis.BaseAnalyzers.CryptoTasks.SymmetricEncryption

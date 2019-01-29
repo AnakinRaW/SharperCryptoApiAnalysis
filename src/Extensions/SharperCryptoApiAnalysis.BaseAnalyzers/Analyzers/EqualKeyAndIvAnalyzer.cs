@@ -130,14 +130,14 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Analyzers
             return second;
         }
 
-        private void ReportOnCrossAssignment(SyntaxNodeAnalysisContext context, AssignmentExpressionSyntax assignment, string accesMemeberName)
+        private void ReportOnCrossAssignment(SyntaxNodeAnalysisContext context, AssignmentExpressionSyntax assignment, string accessMemberName)
         {
             if (assignment.Right is MemberAccessExpressionSyntax rightAccessExpression && assignment.Left is MemberAccessExpressionSyntax leftAccessExpression)
             {
                 if (rightAccessExpression.Expression.ToString() != leftAccessExpression.Expression.ToString())
                     return;
 
-                if (rightAccessExpression.Name.Identifier.Value.ToString() == accesMemeberName)
+                if (rightAccessExpression.Name.Identifier.Value.ToString() == accessMemberName)
                 {
                     var rule = GetRule(DiagnosticId, CurrentSeverity);
                     context.ReportDiagnostic(Diagnostic.Create(rule,

@@ -424,7 +424,7 @@
     <Compile Include="Reports\EqualKeyAndIvReport.cs" />
     <Compile Include="Reports\ConstantKeyReport.cs" />
     <Compile Include="Reports\NonFipsCompliantReport.cs" />
-    <Compile Include="Reports\HardcodedCredentialsReprot.cs" />
+    <Compile Include="Reports\HardcodedCredentialsReport.cs" />
     <Compile Include="Reports\ConstantSaltReport.cs" />
     <Compile Include="Reports\ConstantIvReport.cs" />
     <Compile Include="Reports\WeakOperationModeReport.cs" />

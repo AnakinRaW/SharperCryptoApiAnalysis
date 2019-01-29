@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using EnvDTE;
 using JetBrains.Annotations;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.CryptoTaskGenerator

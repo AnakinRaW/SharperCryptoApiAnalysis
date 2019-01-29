@@ -7,9 +7,7 @@ namespace SharperCryptoApiAnalysis.Vsix.Ui.Converters
     {
         protected override string Convert(bool value, object parameter, CultureInfo culture)
         {
-            if (value)
-                return "Connected";
-            return "Disconnected";
+            return value ? "Connected" : "Disconnected";
         }
     }
 }

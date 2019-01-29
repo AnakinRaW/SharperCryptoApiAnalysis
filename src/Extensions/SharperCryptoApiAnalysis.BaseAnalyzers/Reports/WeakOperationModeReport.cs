@@ -11,7 +11,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Reports
         private static readonly LocalizableString SummaryString = "Weak operation mode used.";
 
         private static readonly LocalizableString DescriptionString = "The operation mode (or cipher) decides how the cipher will encrypt data. " +
-                                                                      "While all of them have their different advantages like allowing to parallelize the encription or decription, " +
+                                                                      "While all of them have their different advantages like allowing to parallelize the encryption or decryption, " +
                                                                       "They also have known weakness the programmer must be aware of. " +
                                                                       "For instance the cipher mode OFB requires to use a different initialization vector for each message. " +
                                                                       "Probably most prominent for it's weaknesses is cipher mode ECB which should not be used.";

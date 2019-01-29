@@ -9,26 +9,31 @@ namespace SharperCryptoApiAnalysis.Interop.CodeAnalysis
     {
         public static IAnalysisReport EmptyReport => new AnalysisReport();
 
+        /// <inheritdoc />
         /// <summary>
         /// The identifier of the report
         /// </summary>
         public string Id { get; } = string.Empty;
 
+        /// <inheritdoc />
         /// <summary>
         /// Short summary of the report.
         /// </summary>
         public string Summary { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// URL leading to a even more detailed report.
         /// </summary>
         public Uri MoreDetailsUrl { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// The description of the report
         /// </summary>
         public string Description { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// The category this analysis belongs to.
         /// </summary>
@@ -36,26 +41,31 @@ namespace SharperCryptoApiAnalysis.Interop.CodeAnalysis
 
         //public string Severity { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// The exploitability of the weakness or threat.
         /// </summary>
         public Exploitability Exploitability { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// Security goals like Authenticity or Integrity which could get exposed
         /// </summary>
         public SecurityGoals ExposedSecurityGoals { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// Information how to fix the code.
         /// </summary>
         public string SolutionRemarks { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// Related links to the report.
         /// </summary>
         public IEnumerable<NamedLink> RelatedLinks { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// Contains custom data to be displayed in a reports viewer
         /// <remarks>Object should be a UI component like FrameworkElement</remarks>

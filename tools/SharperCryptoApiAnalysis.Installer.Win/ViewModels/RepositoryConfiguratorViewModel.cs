@@ -110,7 +110,7 @@ namespace SharperCryptoApiAnalysis.Installer.Win.ViewModels
 
         public string RelativeAnalyzerInstallPath => Path.Combine(CustomRepoAnalyzerInstallPath, Constants.ExtensionsInstallDirectoryName);
 
-        public ICommand BrowsePathCommand => new Command(BrwosePath);
+        public ICommand BrowsePathCommand => new Command(BrowsePath);
         public ICommand SelectAnalyzersCommand => new Command(SelectAnalyzers);
         public ICommand RemoveSelectedAnalyzersCommand => new Command(RemoveSelectedAnalyzers);
         public ICommand AddAnalyzerExternalCommand => new Command(AddAnalyzerExternal);
@@ -123,7 +123,7 @@ namespace SharperCryptoApiAnalysis.Installer.Win.ViewModels
             SelectedSyncMode = ConfigSyncMode.Soft;
         }
 
-        private void BrwosePath()
+        private void BrowsePath()
         {
             var dialog = new VistaFolderBrowserDialog();
             if (!dialog.ShowDialog().Value)
@@ -141,7 +141,7 @@ namespace SharperCryptoApiAnalysis.Installer.Win.ViewModels
                 var url = repo.Network.Remotes.First().Url;
                 RepoUrl = url.TrimEnd(".git");
             }
-            catch (RepositoryNotFoundException e)
+            catch (RepositoryNotFoundException)
             {
                 MessageBox.Show("Provided Path is not a git repository");
             }
@@ -151,10 +151,10 @@ namespace SharperCryptoApiAnalysis.Installer.Win.ViewModels
 
         private void SelectAnalyzers()
         {
-            var dialog = new VistaOpenFileDialog();
-            dialog.Multiselect = true;
-            dialog.CheckFileExists = true;
-            dialog.Filter = "Analyzer File (*.dll)|*.dll";
+            var dialog = new VistaOpenFileDialog
+            {
+                Multiselect = true, CheckFileExists = true, Filter = "Analyzer File (*.dll)|*.dll"
+            };
             if (!dialog.ShowDialog().Value)
             {
                 return;
@@ -191,7 +191,7 @@ namespace SharperCryptoApiAnalysis.Installer.Win.ViewModels
             var url = repository.Network.Remotes.First().Url;
             url = url.TrimEnd(".git");
 
-            if (!CheckAnalyersDistinct())
+            if (!CheckAnalyzersDistinct())
             {
                 MessageBox.Show("Your selected analyzers have duplicate names. Please make sure all analyzers have unique file names");
                 return;
@@ -215,12 +215,12 @@ namespace SharperCryptoApiAnalysis.Installer.Win.ViewModels
 
             UpdateGitIgnore(repository, privateConfigFile.FileName);
 
-            CreateCommmit(repository);
+            CreateCommit(repository);
 
             MessageBox.Show("Successfully configured your repository. Please push the commit with your git interface.");
         }
 
-        private void CreateCommmit(Repository repository)
+        private void CreateCommit(Repository repository)
         {
             Commands.Stage(repository, "*");
             var author = new Signature("ProjectAdmin", "@admin", DateTime.Now);
@@ -298,7 +298,7 @@ namespace SharperCryptoApiAnalysis.Installer.Win.ViewModels
             return true;
         }
 
-        private bool CheckAnalyersDistinct()
+        private bool CheckAnalyzersDistinct()
         {
             return Analyzers.Select(x => x.Name).Distinct().Count() == Analyzers.Count;
         }

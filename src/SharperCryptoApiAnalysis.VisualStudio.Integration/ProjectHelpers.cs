@@ -13,7 +13,7 @@ namespace SharperCryptoApiAnalysis.VisualStudio.Integration
     //Based on https://github.com/madskristensen/AddAnyFile with minor refactoring
     public static class ProjectHelpers
     {
-        private static ISharperCryptoAnalysisServiceProvider _serviceProvider =
+        private static readonly ISharperCryptoAnalysisServiceProvider ServiceProvider =
             Services.SharperCryptoAnalysisServiceProvider;
 
         public static Project GetProjectOfSelectedItem()
@@ -37,7 +37,7 @@ namespace SharperCryptoApiAnalysis.VisualStudio.Integration
 
         public static object GetSelectedItem()
         {
-            var monitorSelection = _serviceProvider.GetService<SVsShellMonitorSelection>() as IVsMonitorSelection;
+            var monitorSelection = ServiceProvider.GetService<SVsShellMonitorSelection>() as IVsMonitorSelection;
 
             monitorSelection.GetCurrentSelection(out var hierarchyPointer,
                 out var itemId,
@@ -119,7 +119,13 @@ namespace SharperCryptoApiAnalysis.VisualStudio.Integration
         public static void OpenFile(FileInfo file)
         {
             VsShellUtilities.OpenDocument(Services.SharperCryptoAnalysisServiceProvider, file.FullName);
-            Services.Dte.ExecuteCommand("SolutionExplorer.SyncWithActiveDocument");
+            try
+            {
+                Services.Dte.ExecuteCommand("SolutionExplorer.SyncWithActiveDocument");
+            }
+            catch
+            {
+            }       
             Services.Dte.ActiveDocument.Activate();
         }
 
@@ -156,7 +162,7 @@ namespace SharperCryptoApiAnalysis.VisualStudio.Integration
                 {
                     ProjectItem docItem = dte.Solution.FindProjectItem(doc.FullName);
 
-                    if (docItem != null && docItem.Properties != null)
+                    if (docItem?.Properties != null)
                     {
                         string fileName = docItem.Properties.Item("FullPath").Value.ToString();
                         if (File.Exists(fileName))

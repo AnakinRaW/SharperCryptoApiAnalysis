@@ -5,12 +5,10 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.VisualStudio.Imaging.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Threading;
 using SharperCryptoApiAnalysis.Interop.Services;
-using SharperCryptoApiAnalysis.Shell;
 using SharperCryptoApiAnalysis.Shell.ViewModels;
 using SharperCryptoApiAnalysis.Shell.ViewPattern;
 

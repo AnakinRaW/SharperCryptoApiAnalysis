@@ -2,10 +2,11 @@
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Converters
 {
+    /// <inheritdoc />
     /// <summary>
-    /// If the value is null this converter will return <see langword="true"/>
+    /// If the value is null this converter will return <see langword="true" />
     /// </summary>
-    /// <seealso cref="SharperCryptoApiAnalysis.Shell.Interop.Converters.ValueConverter{System.Object, System.Boolean}" />
+    /// <seealso cref="!:SharperCryptoApiAnalysis.Shell.Interop.Converters.ValueConverter{System.Object, System.Boolean}" />
     public class NullToBooleanConverter : ValueConverter<object, bool>
     {
         protected override bool Convert(object value, object parameter, CultureInfo culture)

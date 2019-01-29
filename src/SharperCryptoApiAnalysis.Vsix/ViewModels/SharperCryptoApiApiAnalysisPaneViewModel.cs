@@ -20,7 +20,6 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels
 
         private string _searchQuery;
         private IViewModel _content;
-        private readonly IViewModelFactory _viewModelFactory;
         private Task _initializeTask;
         private string _title;
 
@@ -69,7 +68,6 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels
             if (connectionsViewModel != null)
                 _content = connectionsViewModel;
 
-            _viewModelFactory = viewModelFactory;
             IsSearchEnabled = false;
         }
 

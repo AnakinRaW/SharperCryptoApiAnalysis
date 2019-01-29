@@ -28,7 +28,7 @@ namespace SharperCryptoApiAnalysis.Shell
             var message = string.Format(CultureInfo.CurrentCulture,
                 @"Found assembly on wrong binding path: {0} Would you like to learn more about this issue?",
                 bindingPath);
-            var action = VsShellUtilities.ShowMessageBox(serviceProvider, message, "GitHub for Visual Studio", OLEMSGICON.OLEMSGICON_WARNING,
+            VsShellUtilities.ShowMessageBox(serviceProvider, message, "Sharper Crypto-API Analysis", OLEMSGICON.OLEMSGICON_WARNING,
                 OLEMSGBUTTON.OLEMSGBUTTON_YESNO, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
 

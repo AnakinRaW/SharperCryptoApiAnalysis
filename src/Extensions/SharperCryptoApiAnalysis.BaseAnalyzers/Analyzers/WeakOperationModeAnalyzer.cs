@@ -115,13 +115,5 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Analyzers
                 }
             }
         }
-
-        private static bool IsEcbMode(ExpressionSyntax expressionSyntax)
-        {
-            if (expressionSyntax is MemberAccessExpressionSyntax memberAccess)
-                if (memberAccess.Name.Identifier.Value.Equals(nameof(CipherMode.ECB)))
-                    return true;
-            return false;
-        }
     }
 }

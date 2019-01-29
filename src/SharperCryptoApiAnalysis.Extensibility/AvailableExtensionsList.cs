@@ -16,6 +16,8 @@ namespace SharperCryptoApiAnalysis.Extensibility
 
         public void Add(ISharperCryptoApiExtensionMetadata extension)
         {
+            if(extension == null)
+                return;
             var index = _extensions.FindIndex(x => x.Name == extension.Name && x.InstallPath == extension.InstallPath);
             if (index < 0)
                 _extensions.Add(extension);

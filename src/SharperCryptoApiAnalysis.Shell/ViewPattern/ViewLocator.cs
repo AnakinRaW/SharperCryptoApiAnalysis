@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 using SharperCryptoApiAnalysis.Shell.Interop.ViewManager;
-using SharperCryptoApiAnalysis.Shell.ViewModels;
 using SharperCryptoApiAnalysis.VisualStudio.Integration;
 
 namespace SharperCryptoApiAnalysis.Shell.ViewPattern

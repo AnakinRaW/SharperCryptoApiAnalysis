@@ -14,7 +14,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.Reports
                                                                       "Therefore a hash function must be collision free. Otherwise attackers can guess, generate or brute force data that produces the same hash. " +
                                                                       "An attacker can perform different kinds of attacks like preimage attack, second preimage attack or collision attacks. " +
                                                                       "It has been proved that the MD5 hash function is vulnerable to collision attacks. " +
-                                                                      "Thogh RIPEMD-160, which .NET provides, seems to be safe but is not in common use and therefore not well investigated for flaws. Thus it should not be used. " +
+                                                                      "Though RIPEMD-160, which .NET provides, seems to be safe but is not in common use and therefore not well investigated for flaws. Thus it should not be used. " +
                                                                       "\r\nNotice that the provided CVE reports links, regarding MD5, indicate each vulnerability with a critical score.";
 
         private static readonly LocalizableString CategoryString = CommonAnalysisCategories.WeakConfiguration;

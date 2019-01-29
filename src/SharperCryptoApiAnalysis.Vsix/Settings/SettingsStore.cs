@@ -28,12 +28,12 @@ namespace SharperCryptoApiAnalysis.Vsix.Settings
             return Read(null, property, defaultValue);
         }
 
-        public object Read(string subpath, string property, object defaultValue)
+        public object Read(string subPath, string property, object defaultValue)
         {
             Validate.IsNotNull(property, nameof(property));
             Validate.IsNotEmpty(property, nameof(property));
 
-            var collection = subpath != null ? Path.Combine(_root, subpath) : _root;
+            var collection = subPath != null ? Path.Combine(_root, subPath) : _root;
             _store.CreateCollection(collection);
 
             if (defaultValue is bool b)
@@ -59,12 +59,12 @@ namespace SharperCryptoApiAnalysis.Vsix.Settings
             Write(null, property, value);
         }
 
-        public void Write(string subpath, string property, object value)
+        public void Write(string subPath, string property, object value)
         {
             Validate.IsNotNull(property, nameof(property));
             Validate.IsNotEmpty(property, nameof(property));
 
-            var collection = subpath != null ? Path.Combine(_root, subpath) : _root;
+            var collection = subPath != null ? Path.Combine(_root, subPath) : _root;
             _store.CreateCollection(collection);
 
             if (value is bool b)

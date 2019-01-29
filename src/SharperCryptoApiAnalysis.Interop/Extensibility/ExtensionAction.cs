@@ -19,7 +19,7 @@
         /// </summary>
         Uninstall,
         /// <summary>
-        /// Unregisteres and extesion from VS and deletes its file
+        /// Unregisteres and extension from VS and deletes its file
         /// </summary>
         Remove
     }

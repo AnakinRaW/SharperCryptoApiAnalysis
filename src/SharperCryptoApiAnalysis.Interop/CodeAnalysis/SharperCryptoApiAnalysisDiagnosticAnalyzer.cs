@@ -11,23 +11,27 @@ using SharperCryptoApiAnalysis.Interop.Settings;
 
 namespace SharperCryptoApiAnalysis.Interop.CodeAnalysis
 {
+    /// <inheritdoc cref="ISharperCryptoApiAnalysisAnalyzer"/>
     /// <summary>
     /// A code analysis provider in Sharper Crypto-API Analysis
     /// </summary>
-    /// <seealso cref="Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer" />
-    /// <seealso cref="SharperCryptoApiAnalysis.Interop.CodeAnalysis.ISharperCryptoApiAnalysisAnalyzer" />
+    /// <seealso cref="T:Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer" />
+    /// <seealso cref="T:SharperCryptoApiAnalysis.Interop.CodeAnalysis.ISharperCryptoApiAnalysisAnalyzer" />
     public abstract class SharperCryptoApiAnalysisDiagnosticAnalyzer : DiagnosticAnalyzer, ISharperCryptoApiAnalysisAnalyzer
     {
+        /// <inheritdoc />
         /// <summary>
         /// The name.
         /// </summary>
         public abstract string Name { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// The analyzer identifier.
         /// </summary>
         public abstract uint AnalyzerId { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// Indicating whether the analyzer is muted.
         /// </summary>
@@ -45,6 +49,7 @@ namespace SharperCryptoApiAnalysis.Interop.CodeAnalysis
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Supported reports.
         /// </summary>

@@ -7,7 +7,7 @@ namespace SharperCryptoApiAnalysis.BaseAnalyzers.CryptoTasks.SymmetricEncryption
     [Export(typeof(ISymmetricEncryptionCryptoTaskWizardPage))]
     public sealed class SymmetricEncryptionCryptoTaskWizardPageIntegrityCheck : WizardPage, ISymmetricEncryptionCryptoTaskWizardPage
     {
-        private static FrameworkElement _view = new UseMacPage();
+        private static readonly FrameworkElement _view = new UseMacPage();
 
 
         public override string Name => "Encrypt Data with a Key";

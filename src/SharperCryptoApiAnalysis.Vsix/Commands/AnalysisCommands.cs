@@ -8,13 +8,8 @@ namespace SharperCryptoApiAnalysis.Vsix.Commands
 {
     internal static class AnalysisCommands
     {
-        private static IAnalyzerManager _analyzerManager;
         private static IToolWindowManager _toolWindowManager;
         private static IAnalyzerDetailViewModel _viewModel;
-
-        private static IAnalyzerManager AnalyzerManager =>
-            _analyzerManager ?? (_analyzerManager = Services.SharperCryptoAnalysisServiceProvider
-                .Instance.GetService<IAnalyzerManager>());
 
         private static IToolWindowManager ToolWindowManager =>
             _toolWindowManager ?? (_toolWindowManager = Services.SharperCryptoAnalysisServiceProvider

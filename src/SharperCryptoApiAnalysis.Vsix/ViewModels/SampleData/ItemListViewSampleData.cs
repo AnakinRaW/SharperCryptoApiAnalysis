@@ -12,11 +12,9 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels.SampleData
         {
             var metadata = new MetaData();
 
-            var status = new LoadingStatusIndicator();
-            status.Status = LoadingStatus.Loading;
+            var status = new LoadingStatusIndicator {Status = LoadingStatus.Loading};
 
-            var status2 = new LoadingStatusIndicator();
-            status2.Status = LoadingStatus.NoItemsFound;
+            var status2 = new LoadingStatusIndicator {Status = LoadingStatus.NoItemsFound};
 
             ItemsSource = new ObservableCollection<object>
             {
@@ -38,7 +36,7 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels.SampleData
             public string Description => "Real description";
             public Version Version => Version.Parse("1.1.0.1");
             public string Source { get; }
-            public string Author => "Test Autor"; 
+            public string Author => "Test Author"; 
             public bool External { get; }
             public ExtensionFileType FileType => ExtensionFileType.Assembly;
 

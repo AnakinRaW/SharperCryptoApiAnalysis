@@ -149,9 +149,8 @@ namespace SharperCryptoApiAnalysis.Vsix.Services
             }
 
             instance = AddToDisposables(ExportProvider.GetExportedValues<object>(contract).FirstOrDefault(x =>
-                contract.StartsWith("SharperCryptoApiAnalysis.", StringComparison.OrdinalIgnoreCase)
-                    ? x.GetType().Assembly.GetName().Version == _currentVersion
-                    : true));
+                !contract.StartsWith("SharperCryptoApiAnalysis.", StringComparison.OrdinalIgnoreCase) ||
+                x.GetType().Assembly.GetName().Version == _currentVersion));
 
             if (instance != null)
                 return instance;

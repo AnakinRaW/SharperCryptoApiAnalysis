@@ -31,8 +31,11 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
 
         public async Task<string> DownloadString(string resource, Encoding encoding)
         {
-            var webClient = new WebClient();
-            webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
+            var webClient = new WebClient
+            {
+                CachePolicy =
+                    new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore)
+            };
             var address = Url.Combine(RawFilesPathBase, resource);
             var uri = new Uri(address);
             var value = await webClient.DownloadDataTaskAsync(uri);
@@ -97,8 +100,11 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Connectivity
             if (string.IsNullOrEmpty(resource))
                 throw new ArgumentNullException(nameof(resource));
 
-            var webClient = new WebClient();
-            webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
+            var webClient = new WebClient
+            {
+                CachePolicy =
+                    new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore)
+            };
             var s = Url.Combine(RawFilesPathBase, resource);   
             var uri = new Uri(s);
             await webClient.DownloadFileTaskAsync(uri, storagePath);

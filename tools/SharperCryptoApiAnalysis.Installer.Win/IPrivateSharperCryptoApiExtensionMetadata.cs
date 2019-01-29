@@ -12,9 +12,4 @@ namespace SharperCryptoApiAnalysis.Installer.Win
 
         void SetPathValues(string localRepoPath);
     }
-
-    public interface ILocalSharperCryptoApiExtensionMetadata : IPrivateSharperCryptoApiExtensionMetadata
-    {
-        string LocalPath { get; }
-    }
 }

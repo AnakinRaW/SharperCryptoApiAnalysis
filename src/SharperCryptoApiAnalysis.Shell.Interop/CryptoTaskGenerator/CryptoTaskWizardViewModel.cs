@@ -18,6 +18,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.CryptoTaskGenerator
 
         private readonly SelectCryptoTaskWizardPage _selectCryptoTaskPage;
 
+        /// <inheritdoc />
         /// <summary>
         /// The watermark.
         /// </summary>

@@ -93,9 +93,9 @@ namespace SharperCryptoApiAnalysis.Installer.Win.Utilities
         /// <param name="list">The list to listen to.</param>
         protected void ListenForChangeEvents(IList list)
         {
-            if (list is INotifyCollectionChanged)
+            if (list is INotifyCollectionChanged source)
             {
-                CollectionChangedEventManager.AddListener(list as INotifyCollectionChanged, this);
+                CollectionChangedEventManager.AddListener(source, this);
             }
         }
 
@@ -105,9 +105,9 @@ namespace SharperCryptoApiAnalysis.Installer.Win.Utilities
         /// <param name="list">The list to stop listening to.</param>
         protected void StopListeningForChangeEvents(IList list)
         {
-            if (list is INotifyCollectionChanged)
+            if (list is INotifyCollectionChanged source)
             {
-                CollectionChangedEventManager.RemoveListener(list as INotifyCollectionChanged, this);
+                CollectionChangedEventManager.RemoveListener(source, this);
             }
         }
 
@@ -161,8 +161,6 @@ namespace SharperCryptoApiAnalysis.Installer.Win.Utilities
                 case NotifyCollectionChangedAction.Reset:
                     UpdateListsFromSource(sender as IList);
                     break;
-                default:
-                    break;
             }
         }
 
@@ -174,7 +172,7 @@ namespace SharperCryptoApiAnalysis.Installer.Win.Utilities
 
         private void PerformActionOnAllLists(ChangeListAction action, IList sourceList, NotifyCollectionChangedEventArgs collectionChangedArgs)
         {
-            if (sourceList == _masterList)
+            if (Equals(sourceList, _masterList))
             {
                 PerformActionOnList(_targetList, action, collectionChangedArgs, ConvertFromMasterToTarget);
             }
@@ -225,7 +223,7 @@ namespace SharperCryptoApiAnalysis.Installer.Win.Utilities
 
         private bool TargetAndMasterCollectionsAreEqual()
         {
-            return _masterList.Cast<object>().SequenceEqual(_targetList.Cast<object>().Select(item => ConvertFromTargetToMaster(item)));
+            return _masterList.Cast<object>().SequenceEqual(_targetList.Cast<object>().Select(ConvertFromTargetToMaster));
         }
 
         /// <summary>
@@ -234,7 +232,7 @@ namespace SharperCryptoApiAnalysis.Installer.Win.Utilities
         /// <param name="sourceList">The source list.</param>
         private void UpdateListsFromSource(IList sourceList)
         {
-            if (sourceList == _masterList)
+            if (Equals(sourceList, _masterList))
             {
                 SetListValuesFromSource(_masterList, _targetList, ConvertFromMasterToTarget);
             }

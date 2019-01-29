@@ -2,10 +2,11 @@
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.CryptoTaskGenerator
 {
+    /// <inheritdoc />
     /// <summary>
     /// Page used for crypto task wizard
     /// </summary>
-    /// <seealso cref="SharperCryptoApiAnalysis.Shell.Interop.Wizard.IWizardPage" />
+    /// <seealso cref="T:SharperCryptoApiAnalysis.Shell.Interop.Wizard.IWizardPage" />
     public interface ICryptoTaskWizardPage : IWizardPage
     {
         /// <summary>

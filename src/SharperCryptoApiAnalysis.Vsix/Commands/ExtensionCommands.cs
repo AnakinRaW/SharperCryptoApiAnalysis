@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Reflection.Metadata;
 using System.Windows.Input;
 using ModernApplicationFramework.Input.Command;
 using SharperCryptoApiAnalysis.Core;

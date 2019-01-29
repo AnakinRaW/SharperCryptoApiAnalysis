@@ -23,8 +23,8 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels.SampleData
             {
                 Reports = new ObservableCollection<IAnalysisReport>();
 
-                Reports.Add(new SmapleReport());
-                Reports.Add(new SmapleReport());
+                Reports.Add(new SampleReport());
+                Reports.Add(new SampleReport());
             }
 
         }

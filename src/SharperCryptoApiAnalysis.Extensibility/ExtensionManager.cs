@@ -238,7 +238,7 @@ namespace SharperCryptoApiAnalysis.Extensibility
                     if (toInstall.Version == installedExtension.Version)
                         continue; 
 
-                    result.AddAction(new ExtensionCheckActionDataEntry(toInstall, ExtensionAction.DownloadAndInstall, installedExtension?.Version));
+                    result.AddAction(new ExtensionCheckActionDataEntry(toInstall, ExtensionAction.DownloadAndInstall, installedExtension.Version));
                 }
             }
 

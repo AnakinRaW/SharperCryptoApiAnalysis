@@ -7,10 +7,11 @@ using ModernApplicationFramework.Input.Command;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
 {
+    /// <inheritdoc />
     /// <summary>
     /// View model of a wizard
     /// </summary>
-    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
+    /// <seealso cref="T:System.ComponentModel.INotifyPropertyChanged" />
     public abstract class WizardViewModel : INotifyPropertyChanged
     {
         /// <summary>

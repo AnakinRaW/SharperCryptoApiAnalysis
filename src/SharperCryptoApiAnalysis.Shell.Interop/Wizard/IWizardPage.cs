@@ -3,10 +3,11 @@ using System.Windows;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
 {
+    /// <inheritdoc />
     /// <summary>
     /// A page of a wizard
     /// </summary>
-    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
+    /// <seealso cref="T:System.ComponentModel.INotifyPropertyChanged" />
     public interface IWizardPage : INotifyPropertyChanged
     {
         /// <summary>

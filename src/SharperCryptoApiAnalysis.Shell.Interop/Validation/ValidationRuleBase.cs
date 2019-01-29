@@ -4,11 +4,12 @@ using System.Windows.Controls;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Validation
 {
+    /// <inheritdoc />
     /// <summary>
-    /// WPF <see cref="ValidationResult"/> code base
+    /// WPF <see cref="T:System.Windows.Controls.ValidationResult" /> code base
     /// </summary>
     /// <typeparam name="TSource">The type of the source.</typeparam>
-    /// <seealso cref="System.Windows.Controls.ValidationRule" />
+    /// <seealso cref="T:System.Windows.Controls.ValidationRule" />
     public abstract class ValidationRuleBase<TSource> : ValidationRule
     {
         public sealed override ValidationResult Validate(object value, CultureInfo cultureInfo)

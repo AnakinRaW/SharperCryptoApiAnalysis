@@ -16,6 +16,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.CryptoTaskGenerator
     {
         [ImportMany] private IEnumerable<T> _unsortedPaged;
 
+        /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether this instance is empty wizard.
         /// </summary>
@@ -24,6 +25,7 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.CryptoTaskGenerator
         /// </value>
         public virtual bool IsEmptyWizard => false;
 
+        /// <inheritdoc />
         /// <summary>
         /// List of sorted wizard pages
         /// </summary>

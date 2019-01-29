@@ -13,8 +13,8 @@ namespace SharperCryptoApiAnalysis.Vsix.Controls
 
         public bool CheckBoxesEnabled
         {
-            get { return (bool) GetValue(CheckBoxesEnabledProperty); }
-            set { SetValue(CheckBoxesEnabledProperty, value); }
+            get => (bool) GetValue(CheckBoxesEnabledProperty);
+            set => SetValue(CheckBoxesEnabledProperty, value);
         }
 
         static ExtensionListBox()

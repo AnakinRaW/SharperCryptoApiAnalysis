@@ -4,9 +4,10 @@ using System.Windows;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.ViewManager
 {
+    /// <inheritdoc />
     /// <summary>
-    /// A MEF export attribute that defines an export of type <see cref="FrameworkElement"/> with
-    /// <see cref="ViewModelType"/> metadata.
+    /// A MEF export attribute that defines an export of type <see cref="T:System.Windows.FrameworkElement" /> with
+    /// <see cref="P:SharperCryptoApiAnalysis.Shell.Interop.ViewManager.ExportViewForAttribute.ViewModelType" /> metadata.
     /// </summary>
     [MetadataAttribute]
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]

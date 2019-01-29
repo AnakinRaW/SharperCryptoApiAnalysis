@@ -2,10 +2,10 @@
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Commands
 {
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    /// <seealso cref="SharperCryptoApiAnalysis.Shell.Interop.Commands.IVsCommandBase" />
+    /// <seealso cref="T:SharperCryptoApiAnalysis.Shell.Interop.Commands.IVsCommandBase" />
     public interface IVsCommand : IVsCommandBase
     {
         Task Execute();

@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.Shell.TableControl;
 using Microsoft.VisualStudio.Utilities;
-using SharperCryptoApiAnalysis.Interop.CodeAnalysis;
 using SharperCryptoApiAnalysis.Interop.Services;
 
 namespace SharperCryptoApiAnalysis.Vsix.Controls.Internals

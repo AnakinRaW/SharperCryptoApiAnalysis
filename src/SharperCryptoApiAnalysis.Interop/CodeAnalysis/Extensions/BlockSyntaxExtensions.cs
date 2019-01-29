@@ -32,6 +32,8 @@ namespace SharperCryptoApiAnalysis.Interop.CodeAnalysis.Extensions
             assignmentExpression = default(AssignmentExpressionSyntax);
 
             var s = blockSyntax?.DescendantNodes().OfType<AssignmentExpressionSyntax>().ToList();
+            if (s == null || !s.Any())
+                return false;
             foreach (var assignment in s)
             {
                 if (assignment.Left is MemberAccessExpressionSyntax memberAccess)

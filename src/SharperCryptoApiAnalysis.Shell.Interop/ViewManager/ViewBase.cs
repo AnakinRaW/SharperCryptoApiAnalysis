@@ -3,6 +3,7 @@ using System.Windows.Controls;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.ViewManager
 {
+    /// <inheritdoc />
     /// <summary>
     /// Base class for views.
     /// </summary>

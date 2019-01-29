@@ -68,6 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ILocalSharperCryptoApiExtensionMetadata.cs" />
     <Compile Include="IPrivateSharperCryptoApiExtensionMetadata.cs" />
     <Compile Include="PrivateConfigFile.cs" />
     <Compile Include="LocalSharperCryptoApiExtensionMetadata.cs" />

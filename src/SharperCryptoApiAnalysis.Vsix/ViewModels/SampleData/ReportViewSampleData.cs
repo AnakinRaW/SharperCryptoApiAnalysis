@@ -15,7 +15,7 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels.SampleData
 
         public ReportViewSampleData()
         {
-            ActiveReport = new SmapleReport();
+            ActiveReport = new SampleReport();
         }
 
         public IAnalysisReport ActiveReport
@@ -30,7 +30,7 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels.SampleData
         }
     }
 
-    internal sealed class SmapleReport : IAnalysisReport
+    internal sealed class SampleReport : IAnalysisReport
     {
         public object AdditionalContent => new Border {Background = Brushes.Red, Height = 100};
         public string Category => "Test Category";

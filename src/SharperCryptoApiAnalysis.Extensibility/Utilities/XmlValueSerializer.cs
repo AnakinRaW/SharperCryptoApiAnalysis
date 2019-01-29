@@ -352,9 +352,9 @@ namespace SharperCryptoApiAnalysis.Extensibility.Utilities
             }
             else
             {
-                if (!(typeof(T) == typeof(Decimal)))
+                if (!(typeof(T) == typeof(decimal)))
                     return false;
-                boxed = (Decimal)num;
+                boxed = (decimal)num;
             }
             return true;
         }
@@ -372,18 +372,18 @@ namespace SharperCryptoApiAnalysis.Extensibility.Utilities
             }
             else
             {
-                if (!(typeof(T) == typeof(Decimal)))
+                if (!(typeof(T) == typeof(decimal)))
                     return false;
-                boxed = (Decimal)num;
+                boxed = (decimal)num;
             }
             return true;
         }
 
         private static bool TryReboxDecimalAs<T>(ref object boxed)
         {
-            if (!(boxed is Decimal))
+            if (!(boxed is decimal))
                 return false;
-            Decimal num = (Decimal)boxed;
+            decimal num = (decimal)boxed;
             if (typeof(T) == typeof(float))
                 boxed = (float)num;
             else if (typeof(T) == typeof(double))
@@ -392,7 +392,7 @@ namespace SharperCryptoApiAnalysis.Extensibility.Utilities
             }
             else
             {
-                if (!(typeof(T) == typeof(Decimal)))
+                if (!(typeof(T) == typeof(decimal)))
                     return false;
                 boxed = num;
             }

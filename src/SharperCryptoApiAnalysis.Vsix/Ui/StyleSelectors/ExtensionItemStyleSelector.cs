@@ -12,9 +12,7 @@ namespace SharperCryptoApiAnalysis.Vsix.Ui.StyleSelectors
 
         public override Style SelectStyle(object item, DependencyObject container)
         {
-            if (item is LoadingStatusIndicator)
-                return StatusIndicatorStyle;
-            return ItemStyle;
+            return item is LoadingStatusIndicator ? StatusIndicatorStyle : ItemStyle;
         }
     }
 }

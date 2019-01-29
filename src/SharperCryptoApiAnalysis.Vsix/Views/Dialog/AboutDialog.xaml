@@ -41,7 +41,7 @@
         </TextBlock>
         <TextBlock
             Grid.Row="3"
-            Margin="6,12,0,0"
+            Margin="6,12,6,0"
             Text="Disclaimer: The author does not take legal responsibility for potential weaknesses this tool either did not informed about. Furthermore the author does not take legal responsibility for potential weaknesses that might result from executing any code generation features."
             TextAlignment="Left"
             TextWrapping="Wrap" />

@@ -6,7 +6,6 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
-using Microsoft.Internal.VisualStudio.PlatformUI;
 using SharperCryptoApiAnalysis.BaseAnalyzers.Reports;
 using SharperCryptoApiAnalysis.Interop.CodeAnalysis;
 using SharperCryptoApiAnalysis.Interop.CodeAnalysis.Extensions;
