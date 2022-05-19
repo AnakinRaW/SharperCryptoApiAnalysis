@@ -1,15 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <SignAssembly>false</SignAssembly>
-    <DelaySign>false</DelaySign>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Company>Hochschule Düsseldorf - University of Applied Sciences</Company>
-    <Authors>Sebastian Leuer</Authors>
-    <Copyright>Copyright © Sebastian Leuer 2018</Copyright>
-    <Product>Sharper Crypto-API Analysis</Product>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<SignAssembly>false</SignAssembly>
+		<DelaySign>false</DelaySign>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<Authors>Sebastian Leuer</Authors>
+		<Copyright>Copyright © Sebastian Leuer 2022</Copyright>
+		<Product>Sharper Crypto-API Analysis</Product>
+	</PropertyGroup>
 
 </Project>

@@ -8,9 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.PlatformUI;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Threading;
-using ModernApplicationFramework.Input.Command;
 using SharperCryptoApiAnalysis.Interop.Configuration;
 using SharperCryptoApiAnalysis.Interop.Extensibility;
 using SharperCryptoApiAnalysis.Interop.Services;
@@ -62,8 +62,8 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels
             }
         }
 
-        public ICommand UpdateCommand => new Command(ExecuteUpdate);
-        public ICommand SyncCommand => new Command(ExecuteSync);
+        public ICommand UpdateCommand => new DelegateCommand(ExecuteUpdate);
+        public ICommand SyncCommand => new DelegateCommand(ExecuteSync);
 
         public bool SelectAllItems
         {

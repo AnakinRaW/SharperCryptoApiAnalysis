@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using LibGit2Sharp;
-using ModernApplicationFramework.Input.Command;
+using Microsoft.VisualStudio.PlatformUI;
 using Ookii.Dialogs.Wpf;
 using SharperCryptoApiAnalysis.Core;
 using SharperCryptoApiAnalysis.Extensibility.Configuration;
@@ -110,11 +110,11 @@ namespace SharperCryptoApiAnalysis.Installer.Win.ViewModels
 
         public string RelativeAnalyzerInstallPath => Path.Combine(CustomRepoAnalyzerInstallPath, Constants.ExtensionsInstallDirectoryName);
 
-        public ICommand BrowsePathCommand => new Command(BrowsePath);
-        public ICommand SelectAnalyzersCommand => new Command(SelectAnalyzers);
-        public ICommand RemoveSelectedAnalyzersCommand => new Command(RemoveSelectedAnalyzers);
-        public ICommand AddAnalyzerExternalCommand => new Command(AddAnalyzerExternal);
-        public ICommand CommitCommand => new Command(SetupAndCommit);
+        public ICommand BrowsePathCommand => new DelegateCommand(BrowsePath);
+        public ICommand SelectAnalyzersCommand => new DelegateCommand(SelectAnalyzers);
+        public ICommand RemoveSelectedAnalyzersCommand => new DelegateCommand(RemoveSelectedAnalyzers);
+        public ICommand AddAnalyzerExternalCommand => new DelegateCommand(AddAnalyzerExternal);
+        public ICommand CommitCommand => new DelegateCommand(SetupAndCommit);
 
         public RepositoryConfiguratorViewModel()
         {

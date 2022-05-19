@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using ModernApplicationFramework.Input.Command;
+using Microsoft.VisualStudio.PlatformUI;
 using SharperCryptoApiAnalysis.Interop.CodeAnalysis;
 using SharperCryptoApiAnalysis.Shell;
 using SharperCryptoApiAnalysis.Shell.ViewModels;
@@ -21,7 +21,7 @@ namespace SharperCryptoApiAnalysis.Vsix.Commands
 
 
 
-        public static ICommand ShowReportCommand { get; } = new Command(ShowReport, CanShowReport);
+        public static ICommand ShowReportCommand { get; } = new DelegateCommand(ShowReport, CanShowReport);
 
         private static bool CanShowReport(object o)
         {

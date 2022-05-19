@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using SharperCryptoApiAnalysis.Interop.CodeAnalysis;
 
 namespace SharperCryptoApiAnalysis.Vsix.Settings
@@ -35,7 +33,6 @@ namespace SharperCryptoApiAnalysis.Vsix.Settings
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

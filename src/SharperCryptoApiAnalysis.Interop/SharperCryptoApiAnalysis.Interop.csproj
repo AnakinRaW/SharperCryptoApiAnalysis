@@ -1,23 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <SignAssembly>false</SignAssembly>
-    <Product>Sharper Crypto-API Analysis</Product>
-    <Company>Hochschule Düsseldorf - University of Applied Sciences</Company>
-    <Copyright>Copyright © Sebastian Leuer 2018</Copyright>
-    <Authors>Sebastian Leuer</Authors>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<SignAssembly>false</SignAssembly>
+		<Product>Sharper Crypto-API Analysis</Product>
+		<Copyright>Copyright © Sebastian Leuer 2018</Copyright>
+		<Authors>Sebastian Leuer</Authors>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CommonServiceLocator" Version="2.0.4" />
-    <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
-    <PackageReference Include="Microsoft.CodeAnalysis" Version="2.9.0" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="4.5.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommonServiceLocator" Version="2.0.6" />
+		<PackageReference Include="Microsoft.CodeAnalysis" Version="4.2.0" />
+		<PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SharperCryptoApiAnalysis.Core\SharperCryptoApiAnalysis.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\SharperCryptoApiAnalysis.Core\SharperCryptoApiAnalysis.Core.csproj" />
+	</ItemGroup>
 
 </Project>

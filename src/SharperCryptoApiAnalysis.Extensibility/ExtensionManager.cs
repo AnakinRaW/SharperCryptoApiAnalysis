@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using SharperCryptoApiAnalysis.Core;
 using SharperCryptoApiAnalysis.Extensibility.ExtensionMetadata;
 using SharperCryptoApiAnalysis.Extensibility.Manifest;
@@ -354,7 +353,6 @@ namespace SharperCryptoApiAnalysis.Extensibility
             return data.Actions.Where(x => x.Action == action).Select(x => x.ExtensionMetadata).ToList();
         }
 
-        [NotifyPropertyChangedInvocator]
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

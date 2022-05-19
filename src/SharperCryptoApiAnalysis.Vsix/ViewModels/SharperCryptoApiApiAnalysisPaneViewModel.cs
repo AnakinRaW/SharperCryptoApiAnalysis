@@ -4,7 +4,7 @@ using System.ComponentModel.Design;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Internal.VisualStudio.Shell;
-using ModernApplicationFramework.Input.Command;
+using Microsoft.VisualStudio.PlatformUI;
 using SharperCryptoApiAnalysis.Shell.Commands;
 using SharperCryptoApiAnalysis.Shell.Interop.ViewManager;
 using SharperCryptoApiAnalysis.Shell.ViewModels;
@@ -53,10 +53,10 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels
             }
         }
 
-        private ICommand ShowManageConnectionsCommand => new Command(ShowView<IManageConnectionsViewModel>);
-        private ICommand ShowManageExtensionsCommand => new Command(ShowView<IManageExtensionsViewModel>);
-        private ICommand ShowAnalyzerDetailCommand => new Command(ShowView<IAnalyzerDetailViewModel>);
-        private ICommand ShowAnalyzerReportsCommand => new Command(ShowView<IAnalyzerReportsViewModel>);
+        private ICommand ShowManageConnectionsCommand => new DelegateCommand(ShowView<IManageConnectionsViewModel>);
+        private ICommand ShowManageExtensionsCommand => new DelegateCommand(ShowView<IManageExtensionsViewModel>);
+        private ICommand ShowAnalyzerDetailCommand => new DelegateCommand(ShowView<IAnalyzerDetailViewModel>);
+        private ICommand ShowAnalyzerReportsCommand => new DelegateCommand(ShowView<IAnalyzerReportsViewModel>);
 
         [ImportingConstructor]
         public SharperCryptoApiApiAnalysisPaneViewModel(

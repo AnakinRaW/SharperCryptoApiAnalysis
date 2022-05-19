@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.ViewManager
 {
@@ -8,7 +7,6 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.ViewManager
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

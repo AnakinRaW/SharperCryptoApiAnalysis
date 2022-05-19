@@ -2,7 +2,7 @@
 using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Input;
-using ModernApplicationFramework.Input.Command;
+using Microsoft.VisualStudio.PlatformUI;
 using SharperCryptoApiAnalysis.Connectivity.Exceptions;
 using SharperCryptoApiAnalysis.Interop.Configuration;
 using SharperCryptoApiAnalysis.Interop.Services;
@@ -22,9 +22,9 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels
 
         public IConfigurationManager ConfigurationManager { get; }
 
-        public ICommand ConnectCommand => new Command(Connect);
-        public ICommand SyncModeInfoCommand => new Command(ShowSyncModeInfo);
-        public ICommand DisconnectCommand => new Command(Disconnect);
+        public ICommand ConnectCommand => new DelegateCommand(Connect);
+        public ICommand SyncModeInfoCommand => new DelegateCommand(ShowSyncModeInfo);
+        public ICommand DisconnectCommand => new DelegateCommand(Disconnect);
 
         public string SyncModeText { get; private set; }
 

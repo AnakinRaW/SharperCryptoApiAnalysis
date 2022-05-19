@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Activities;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -58,7 +57,7 @@ namespace SharperCryptoApiAnalysis.VisualStudio.Integration
             InstallId = installId;
             Version = Version.Parse(version);
             if (Version.Major < 14)
-                throw new VersionMismatchException("Version must be at least 14.0");
+                throw new InvalidOperationException("Version must be at least 14.0");
             Name = name;
         }
 

@@ -1,4 +1,6 @@
-﻿namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
+﻿using System.Windows;
+
+namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
 {
     public partial class WizardWindow
     {
@@ -13,7 +15,7 @@
             DataContext = viewModel;         
         }
 
-        private void OnDataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue != null && e.OldValue is WizardViewModel oldViewModel)
                 oldViewModel.Finished -= OnFinished;

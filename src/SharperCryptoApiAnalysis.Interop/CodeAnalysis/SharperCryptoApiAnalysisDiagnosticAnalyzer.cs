@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using CommonServiceLocator;
-using JetBrains.Annotations;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using SharperCryptoApiAnalysis.Interop.Settings;
@@ -165,7 +164,6 @@ namespace SharperCryptoApiAnalysis.Interop.CodeAnalysis
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -5,7 +5,6 @@
 
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 
 namespace SharperCryptoApiAnalysis.Vsix.ViewModels.Extension
 {
@@ -44,7 +43,6 @@ namespace SharperCryptoApiAnalysis.Vsix.ViewModels.Extension
             LoadingMessage = loadingMessage;
         }
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

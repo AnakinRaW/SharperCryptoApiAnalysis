@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using SharperCryptoApiAnalysis.Connectivity;
 using SharperCryptoApiAnalysis.Connectivity.Exceptions;
 using SharperCryptoApiAnalysis.Core;
@@ -120,7 +119,6 @@ namespace SharperCryptoApiAnalysis.Extensibility.Configuration
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

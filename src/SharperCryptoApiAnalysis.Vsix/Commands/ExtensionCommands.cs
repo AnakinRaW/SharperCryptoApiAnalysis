@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
-using ModernApplicationFramework.Input.Command;
+using Microsoft.VisualStudio.PlatformUI;
 using SharperCryptoApiAnalysis.Core;
 using SharperCryptoApiAnalysis.Interop.Configuration;
 using SharperCryptoApiAnalysis.Interop.Extensibility;
@@ -18,9 +18,9 @@ namespace SharperCryptoApiAnalysis.Vsix.Commands
             _configurationManager ?? (_configurationManager = Services.SharperCryptoAnalysisServiceProvider
                 .Instance.GetService<IConfigurationManager>());
 
-        public static ICommand UninstallExtensionCommand { get; } = new Command(UninstallExtension, CanUninstallExtension);
+        public static ICommand UninstallExtensionCommand { get; } = new DelegateCommand(UninstallExtension, CanUninstallExtension);
 
-        public static ICommand InstallExtensionCommand { get; } = new Command(InstallExtension, CanInstallExtension);
+        public static ICommand InstallExtensionCommand { get; } = new DelegateCommand(InstallExtension, CanInstallExtension);
 
         private static bool CanInstallExtension(object arg)
         {

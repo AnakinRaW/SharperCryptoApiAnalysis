@@ -75,17 +75,17 @@
                 Command="{Binding PreviousPageCommand}"
                 Content="Back"
                 Visibility="{Binding CurrentPage.HasPreviousPage, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <platformUi:DialogButton
+            <Button
                 Grid.Column="1"
                 Command="{Binding NextPageCommand}"
                 Content="Next"
                 Visibility="{Binding CurrentPage.HasNextPage, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <platformUi:DialogButton
+            <Button
                 Grid.Column="1"
                 Command="{Binding FinishCommand}"
                 Content="Finish"
                 Visibility="{Binding CurrentPage.CanFinish, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <platformUi:DialogButton
+            <Button
                 Grid.Column="3"
                 Content="Cancel"
                 IsCancel="True" />

@@ -2,8 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using JetBrains.Annotations;
-using ModernApplicationFramework.Input.Command;
+using Microsoft.VisualStudio.PlatformUI;
 
 namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
 {
@@ -34,17 +33,17 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
         /// <summary>
         /// The next page command.
         /// </summary>
-        public ICommand NextPageCommand => new Command(NavigateNextPage);
+        public ICommand NextPageCommand => new DelegateCommand(NavigateNextPage);
 
         /// <summary>
         /// The previous page command.
         /// </summary>
-        public ICommand PreviousPageCommand => new Command(NavigatePreviousPage);
+        public ICommand PreviousPageCommand => new DelegateCommand(NavigatePreviousPage);
 
         /// <summary>
         /// The finish command.
         /// </summary>
-        public ICommand FinishCommand => new Command(ExecuteFinish);
+        public ICommand FinishCommand => new DelegateCommand(ExecuteFinish);
 
         /// <summary>
         /// Gets or sets a value indicating whether the wizard is completed.
@@ -89,7 +88,6 @@ namespace SharperCryptoApiAnalysis.Shell.Interop.Wizard
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
